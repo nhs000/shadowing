@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <video id="video" controls preload="metadata">
+            <source src="@/assets/videos/jellies.mp4" type="video/mp4" />
+            <track src="@/assets/subtitles/viet.vtt" kind="subtitles" srclang="en-US" label="English" default/>
+        </video>
+    </div>
+</template>
+
+<script>
+ export default {
+   name: 'Transcript',
+   methods: {
+     /* https://downsub.com/?url=https%3A%2F%2Fyoutu.be%2FQEw0qEa0E50%3Flist%3DPLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z */
+     play() {
+       var vid = document.getElementById("video");
+       vid.play();
+     },
+     pause() {
+       var vid = document.getElementById("video");
+       vid.pause();
+     }
+   }
+ }
+</script>

@@ -1,0 +1,3762 @@
+WEBVTT
+
+1
+00:00:04.860 --> 00:00:09.610
+chào mọi người, tôi là Abbi nếu bạn không ở đây tuần trước Tôi là người đứng đầu lớp T
+
+2
+00:00:09.610 --> 00:00:14.709
+và đây là bài thứ hai trong ba bài giảng mà tôi sẽ giảng về RN kết thúc
+
+3
+00:00:14.709 --> 00:00:21.340
+và các chủ đề liên quan đều ổn, chào mừng bạn đến với tuần thứ 4 hôm nay chúng ta sẽ học
+
+4
+00:00:21.340 --> 00:00:26.170
+về thành phần vanch và một số loại nguyên tử sắt phức tạp hơn trước khi chúng ta
+
+5
+00:00:26.170 --> 00:00:29.830
+bắt đầu Tôi đã nhận được một vài thông báo thông báo đầu tiên là
+
+6
+00:00:29.830 --> 00:00:34.780
+nhiệm vụ 4 được phát hành hôm nay, đó là thứ Năm của tuần tới
+
+7
+00:00:34.780 --> 00:00:38.739
+Thứ ba, điều đó có nghĩa là bạn có nhiều hơn hai ngày để làm điều đó so với tất cả
+
+8
+00:00:38.739 --> 00:00:42.100
+bài tập về nhà khác và lý do cho bài tập 4 có lẽ là nhiều việc hơn
+
+9
+00:00:42.100 --> 00:00:46.600
+so với các bài tập về nhà khác cho đến nay, đừng ngạc nhiên bởi bài tập 4 là tất cả
+
+10
+00:00:46.600 --> 00:00:49.960
+về dịch máy thần kinh và chúng ta sẽ tìm hiểu về bước sóng
+
+11
+00:00:49.960 --> 00:00:55.329
+Bài giảng thứ năm tuần này và điều này thực sự thú vị bởi vì thực sự CS 2 đến
+
+12
+00:00:55.329 --> 00:00:58.809
+4 và chưa bao giờ có một nhiệm vụ nmt trước đây vì vậy đây là hoàn toàn mới trong năm nay và
+
+13
+00:00:58.809 --> 00:01:01.329
+bạn sẽ là năm đầu tiên của sinh viên bạn sẽ làm và
+
+14
+00:01:01.329 --> 00:01:05.710
+sau đó chuyển nhượng trống một cái gì đó khác với nhiệm vụ 4 là
+
+15
+00:01:05.710 --> 00:01:08.920
+rằng bạn sẽ sử dụng Azure, một dịch vụ điện toán đám mây trong
+
+16
+00:01:08.920 --> 00:01:13.990
+để đào tạo các hệ thống nmt của bạn trên một máy ảo với GPU và đây là
+
+17
+00:01:13.990 --> 00:01:18.370
+cần thiết để có thể làm điều đó trong một khoảng thời gian hợp lý để tôi có
+
+18
+00:01:18.370 --> 00:01:21.520
+một cảnh báo là nếu bạn là một người có lẽ không ăn trưa nhiều
+
+19
+00:01:21.520 --> 00:01:25.330
+kinh nghiệm làm việc trên các máy từ xa, ví dụ nếu bạn không
+
+20
+00:01:25.330 --> 00:01:30.010
+quen thuộc với SSH hoặc T mark hoặc chỉnh sửa văn bản từ xa sau đó tôi khuyên bạn nên lập ngân sách
+
+21
+00:01:30.010 --> 00:01:32.710
+thêm chút thời gian cho bài tập 4 vì điều đó có thể sẽ đưa bạn đến
+
+22
+00:01:32.710 --> 00:01:37.600
+Một chút thời gian để thiết lập và làm quen với một lần nữa tôi sẽ nhấn mạnh làm
+
+23
+00:01:37.600 --> 00:01:41.800
+bắt đầu sớm với nhiệm vụ 4 vì hệ thống nmt mất khoảng 4 giờ để
+
+24
+00:01:41.800 --> 00:01:45.520
+đào tạo trên máy ảo của bạn để bạn thực sự không thể khởi động nó vào đêm hôm trước
+
+25
+00:01:45.520 --> 00:01:49.540
+và mong đợi để có được nó đúng giờ và cyma 4 thực sự là khá nhiều hơn nữa
+
+26
+00:01:49.540 --> 00:01:54.250
+phức tạp hơn nhiệm vụ 3 vì vậy đừng có cảm giác an toàn sai lầm nếu
+
+27
+00:01:54.250 --> 00:01:59.770
+bạn đã tìm thấy bài tập 2 dễ dàng vì vậy các slide thứ năm trên nmt đã có trên trang web
+
+28
+00:01:59.770 --> 00:02:03.760
+hôm nay vì vậy bạn thậm chí có thể bắt đầu nhìn vào những ngày hôm nay nếu bạn muốn nếu bạn muốn
+
+29
+00:02:03.760 --> 00:02:08.500
+bắt đầu chuyển nhượng sớm vì tôi có thêm một vài thông báo về
+
+30
+00:02:08.500 --> 00:02:12.040
+chủ đề của các dự án trong các bài giảng tuần tới sẽ là tất cả về các dự án
+
+31
+00:02:12.040 --> 00:02:15.640
+bạn sẽ nghe về trả lời câu hỏi và phông chữ mặc định của
+
+32
+00:02:15.640 --> 00:02:18.310
+các dự án và sau đó bạn cũng sẽ nhận được một số lời khuyên về cách bạn
+
+33
+00:02:18.310 --> 00:02:22.569
+Tôi chọn và xác định các dự án tùy chỉnh của riêng bạn để nó ổn nếu bạn không
+
+34
+00:02:22.569 --> 00:02:25.450
+nghĩ về dự án tuần này không sao, bạn có thể trì hoãn đến tuần sau
+
+35
+00:02:25.450 --> 00:02:28.330
+bắt đầu nghĩ về nó lần đầu tiên nhưng nếu bạn là một người
+
+36
+00:02:28.330 --> 00:02:30.730
+đã suy nghĩ về các dự án của bạn chẳng hạn nếu bạn đang cố gắng chọn
+
+37
+00:02:30.730 --> 00:02:34.540
+dự án tùy chỉnh sau đó bạn nên kiểm tra trang dự án trang web bởi vì
+
+38
+00:02:34.540 --> 00:02:38.230
+có khá nhiều thông tin về cách chọn dự án của bạn và một số
+
+39
+00:02:38.230 --> 00:02:42.640
+nguồn cảm hứng và bao gồm chúng tôi đã thu thập một số ý tưởng dự án từ
+
+40
+00:02:42.640 --> 00:02:47.200
+nhiều thành viên của phòng thí nghiệm AI của Stanford, vì vậy đây là những giảng viên và nghiên cứu sinh
+
+41
+00:02:47.200 --> 00:02:51.459
+và postdocs, những người có ý tưởng cho một dự án lập kế hoạch RPG mà họ muốn
+
+42
+00:02:51.459 --> 00:02:55.269
+cs2 sinh viên khác nhau như bạn để làm việc vì vậy đặc biệt là nếu bạn
+
+43
+00:02:55.269 --> 00:02:59.290
+mong muốn được nghiên cứu sau này đây là một cơ hội thực sự tuyệt vời để
+
+44
+00:02:59.290 --> 00:03:02.019
+làm việc với ai đó trong đội ngũ nhân viên họ là phòng thí nghiệm và có thể nhận được một số cố vấn như
+
+45
+00:03:02.019 --> 00:03:08.200
+cũng ổn vì vậy đây là một cái nhìn tổng quan tuần trước chúng ta
+
+46
+00:03:08.200 --> 00:03:11.319
+tìm hiểu về các mạng thần kinh tái phát và chúng tôi đã tìm hiểu về lý do tại sao chúng thực sự
+
+47
+00:03:11.319 --> 00:03:14.560
+tuyệt vời cho mô hình ngôn ngữ và hôm nay chúng ta sẽ tìm hiểu về một số vấn đề
+
+48
+00:03:14.560 --> 00:03:17.560
+với ống kính của chúng tôi và chúng tôi sẽ tìm hiểu về cách khắc phục chúng và điều này sẽ xảy ra
+
+49
+00:03:17.560 --> 00:03:22.780
+để tạo động lực tốt nhất cho chúng tôi tìm hiểu về một số biến thể RNN phức tạp hơn và sau đó
+
+50
+00:03:22.780 --> 00:03:27.400
+bài giảng tiếp theo vào thứ năm chúng ta sẽ có thêm một số nội dung dựa trên ứng dụng
+
+51
+00:03:27.400 --> 00:03:30.190
+vì vậy chúng ta sẽ học về dịch máy thần kinh
+
+52
+00:03:30.190 --> 00:03:34.120
+nhiệm vụ thực sự quan trọng trong NLP và học sâu và đặc biệt sẽ học
+
+53
+00:03:34.120 --> 00:03:38.859
+về kiến ​​trúc này được gọi là chuỗi trình tự được chú ý nhưng trong nhiều hơn
+
+54
+00:03:38.859 --> 00:03:42.790
+chi tiết bài giảng hôm nay trước tiên chúng ta sẽ tìm hiểu về độ dốc biến mất
+
+55
+00:03:42.790 --> 00:03:46.510
+vấn đề và điều này sẽ thúc đẩy chúng tôi tìm hiểu về hai loại RNN mới
+
+56
+00:03:46.510 --> 00:03:52.120
+được gọi là bộ nhớ ngắn hạn và các đơn vị định kỳ có kiểm soát mà chúng tôi Rustica tìm hiểu về
+
+57
+00:03:52.120 --> 00:03:55.600
+một số loại sửa chữa linh tinh khác cho vấn đề độ dốc biến mất hoặc
+
+58
+00:03:55.600 --> 00:03:58.870
+vấn đề độ dốc phát nổ, đặc biệt chúng tôi đã tìm hiểu về
+
+59
+00:03:58.870 --> 00:04:03.190
+cắt gradient khá đơn giản nhưng khá quan trọng và chúng tôi cũng sẽ
+
+60
+00:04:03.190 --> 00:04:07.209
+để tìm hiểu về bỏ qua các kết nối vốn là một kiến ​​trúc thần kinh khá mới
+
+61
+00:04:07.209 --> 00:04:11.799
+cố gắng khắc phục vấn đề chấm điểm banchon và sau đó vào cuối bài giảng
+
+62
+00:04:11.799 --> 00:04:15.790
+tìm hiểu về một số biến thể RNN lạ mắt hơn như Arianna RNs hai chiều
+
+63
+00:04:15.790 --> 00:04:19.539
+những người đi không chỉ từ trái sang phải mà còn phải sang trái và chúng ta
+
+64
+00:04:19.539 --> 00:04:23.410
+sẽ tìm hiểu về RNA nhiều lớp và đó là khi bạn xếp chồng nhiều hoặc một
+
+65
+00:04:23.410 --> 00:04:28.090
+quảng cáo chồng chéo lên nhau vì vậy ngày nay có rất nhiều định nghĩa quan trọng
+
+66
+00:04:28.090 --> 00:04:30.729
+bạn sẽ thấy rằng thông tin trong bài giảng này rất hay
+
+67
+00:04:30.729 --> 00:04:37.240
+quan trọng đối với nhiệm vụ bốn và thăm dò dự án của bạn cũng không sao, vì vậy hãy lấy
+
+68
+00:04:37.240 --> 00:04:42.729
+bắt đầu suy nghĩ về các thành phần biến mất vì vậy ở đây chúng tôi có một RNN với
+
+69
+00:04:42.729 --> 00:04:47.680
+Hãy nói bốn bước và được cho là có một số mất mát mà J rơi và
+
+70
+00:04:47.680 --> 00:04:52.150
+đó được tính toán dựa trên giai đoạn ẩn thứ tư, vì vậy, giả sử chúng ta
+
+71
+00:04:52.150 --> 00:04:56.590
+quan tâm đến việc hỏi đạo hàm của J cuối cùng này là gì
+
+72
+00:04:56.590 --> 00:05:02.439
+liên quan đến các trạng thái ẩn h1 Các quốc gia ẩn đầu tiên vì vậy tôi đại diện
+
+73
+00:05:02.439 --> 00:05:06.279
+rằng với ký hiệu mũi tên màu xanh này để thể hiện cách chúng ta phải thực hiện
+
+74
+00:05:06.279 --> 00:05:10.210
+độ dốc chảy ngược để tính toán điều này vì vậy nếu chúng ta quan tâm đến
+
+75
+00:05:10.210 --> 00:05:14.259
+Độ dốc này là gì chúng ta có thể áp dụng quy tắc chuỗi và nói tốt đó là sản phẩm
+
+76
+00:05:14.259 --> 00:05:18.909
+độ dốc của tổn thất đối với H 2 và sau đó là độ dốc của H 2
+
+77
+00:05:18.909 --> 00:05:23.919
+trong đó đối với H 1 và tương tự như vậy, chúng ta có thể phân tách điều đó một lần nữa
+
+78
+00:05:23.919 --> 00:05:28.900
+sử dụng quy tắc chuỗi và chúng ta có thể làm lại vì vậy những gì chúng ta đã làm ở đây là chúng ta
+
+79
+00:05:28.900 --> 00:05:33.490
+phân tách gradient mà chúng ta quan tâm đến các sản phẩm của chúng
+
+80
+00:05:33.490 --> 00:05:37.719
+độ dốc trung gian khác nhau và đặc biệt là chúng ta đang thấy tất cả các HT này
+
+81
+00:05:37.719 --> 00:05:43.240
+bởi HT trừ đi 1 độ dốc liền kề của các quốc gia ẩn nên điều tôi muốn hỏi
+
+82
+00:05:43.240 --> 00:05:48.339
+bạn là những gì xảy ra nếu các độ dốc nhỏ này có rất nhiều
+
+83
+00:05:48.339 --> 00:05:52.319
+chúng là những gì xảy ra nếu chúng nhỏ
+
+84
+00:05:52.319 --> 00:05:57.909
+Vì vậy, vấn đề tổng thể của vấn đề độ dốc biến mất là khi những
+
+85
+00:05:57.909 --> 00:06:01.839
+độ dốc nhỏ thì độ dốc tổng thể của chúng ta sẽ nhỏ hơn và
+
+86
+00:06:01.839 --> 00:06:06.849
+nhỏ hơn khi nó lan truyền xa hơn vì độ dốc tích lũy là
+
+87
+00:06:06.849 --> 00:06:09.669
+sản phẩm của tất cả các gradient trung gian này và khi bạn nhân lên
+
+88
+00:06:09.669 --> 00:06:14.020
+một cái gì đó nhỏ lại thì toàn bộ nó trở nên nhỏ hơn
+
+89
+00:06:14.020 --> 00:06:17.020
+Tôi đại diện ở đây với những mũi tên màu xanh nhỏ hơn và nhỏ hơn đi ngược
+
+90
+00:06:17.020 --> 00:06:22.000
+vì vậy đó là một ý tưởng chung về vấn đề độ dốc biến mất ở đây
+
+91
+00:06:22.000 --> 00:06:26.830
+định nghĩa chính thức hơn một chút vì vậy nếu bạn nhớ từ lần trước nếu chúng ta có một
+
+92
+00:06:26.830 --> 00:06:31.870
+RNN mới thì HT trạng thái ẩn được tính như là một hàm của trước đó
+
+93
+00:06:31.870 --> 00:06:36.699
+trạng thái ẩn HT trừ đi 1 và đầu vào hiện tại XT để bạn có thể nhớ trong
+
+94
+00:06:36.699 --> 00:06:40.750
+bài giảng trước chúng tôi đã nói rằng XT là một vectơ ướt nóng đại diện cho các từ
+
+95
+00:06:40.750 --> 00:06:44.560
+và sau đó et là nhúng bài giảng này, chúng ta sẽ thoát khỏi
+
+96
+00:06:44.560 --> 00:06:47.470
+chi tiết đó và chúng tôi chỉ đang suy nghĩ rất trừu tượng về một RNN
+
+97
+00:06:47.470 --> 00:06:51.790
+có một số loại đầu vào XT và XT chỉ là bất kỳ loại vectơ nào có thể dày đặc
+
+98
+00:06:51.790 --> 00:06:56.050
+vectơ nhưng bạn biết nó có thể là từ ngữ hay không nó có thể là một lõi cứng dày đặc nhưng
+
+99
+00:06:56.050 --> 00:07:02.050
+đó chỉ là đầu vào nên đó là định nghĩa mà chúng ta đã học lần trước
+
+100
+00:07:02.050 --> 00:07:06.460
+vanilla hoặc một ounce vì vậy điều này có nghĩa là đạo hàm của các trạng thái ẩn HT
+
+101
+00:07:06.460 --> 00:07:10.290
+Bước T liên quan đến trạng thái ẩn trước đó là biểu thức này ở đây vì vậy
+
+102
+00:07:10.290 --> 00:07:15.220
+đây chỉ là một ứng dụng của quy tắc chuỗi và nếu bạn nhìn vào nó đủ lâu
+
+103
+00:07:15.220 --> 00:07:17.230
+để tham khảo lại bài giảng chống lưng bạn sẽ thấy
+
+104
+00:07:17.230 --> 00:07:22.570
+điều đó có ý nghĩa gì không, đặc biệt là chúng ta nhân với WH ở cuối
+
+105
+00:07:22.570 --> 00:07:28.990
+bởi vì chúng ta có phép nhân WH và HT trừ 1 ở bên trong ok vậy nếu
+
+106
+00:07:28.990 --> 00:07:32.080
+bạn nhớ trên slide trước chúng tôi đã suy nghĩ về độ dốc
+
+107
+00:07:32.080 --> 00:07:37.120
+về sự mất mát ở bước nào đó, hãy nói về trạng thái ẩn HJ trên
+
+108
+00:07:37.120 --> 00:07:43.270
+một số bước trước J và có thể J là một vài bước trước tôi để bây giờ chúng ta có thể
+
+109
+00:07:43.270 --> 00:07:48.820
+viết điều này theo cách sau để chỉ bằng cách chơi quy tắc chuỗi sau đó trên
+
+110
+00:07:48.820 --> 00:07:51.640
+dòng đầu tiên nói rằng công cụ phái sinh này mà chúng tôi quan tâm có thể
+
+111
+00:07:51.640 --> 00:07:55.570
+bị phân rã thành đạo hàm đối với bước I là loại
+
+112
+00:07:55.570 --> 00:07:58.870
+bước cuối cùng và sau đó thực hiện tất cả các gradient trung gian của liền kề
+
+113
+00:07:58.870 --> 00:08:02.890
+cũng ẩn các trạng thái để slide đầu tiên giống hệt như
+
+114
+00:08:02.890 --> 00:08:09.760
+chúng tôi đã nhìn vào hình ảnh sơ đồ trên slide trước ok và
+
+115
+00:08:09.760 --> 00:08:14.710
+sau đó cho rằng chúng tôi đã tìm ra d HT là gì bởi dht trừ đi 1
+
+116
+00:08:14.710 --> 00:08:18.430
+slide và chúng ta chỉ có thể thay thế trong đó vì vậy những gì chúng ta đang tìm kiếm là cái này
+
+117
+00:08:18.430 --> 00:08:24.520
+độ dốc tổng thể mà chúng tôi quan tâm đặc biệt có thuật ngữ này
+
+118
+00:08:24.520 --> 00:08:29.620
+ma trận trọng số và nó nhân với chính tôi trừ đi J lần vì có tôi
+
+119
+00:08:29.620 --> 00:08:35.500
+trừ J nhiều bước giữa bước J và bước I, đó là khoảng cách mà chúng ta
+
+120
+00:08:35.500 --> 00:08:41.020
+du lịch với độ dốc này vì vậy vấn đề lớn ở đây là nếu ma trận trọng số này
+
+121
+00:08:41.020 --> 00:08:46.150
+H là nhỏ thì thuật ngữ này sẽ nhỏ dần theo cấp số nhân
+
+122
+00:08:46.150 --> 00:08:53.890
+nhỏ khi tôi và J cách xa nhau hơn để cho chi tiết hơn một chút chúng ta có thể
+
+123
+00:08:53.890 --> 00:08:58.520
+nghĩ về các chỉ tiêu ma trận l2 của tất cả các ma trận này
+
+124
+00:08:58.520 --> 00:09:07.990
+và như một điều rất xin lỗi Tôi là một thực tế đã biết về các chỉ tiêu l2 mà bạn có
+
+125
+00:09:07.990 --> 00:09:13.850
+bất bình đẳng rằng định mức của các sản phẩm của một số ma trận nhỏ hơn bằng
+
+126
+00:09:13.850 --> 00:09:17.630
+sản phẩm của các chỉ tiêu của ma trận, đặc biệt chúng ta đang thấy rằng
+
+127
+00:09:17.630 --> 00:09:21.130
+định mức của độ dốc này mà chúng tôi quan tâm nhỏ hơn hoặc bằng
+
+128
+00:09:21.130 --> 00:09:27.440
+sản phẩm tôi trừ J nhiều lần so với định mức của ma trận cách WH vì vậy đây là
+
+129
+00:09:27.440 --> 00:09:30.890
+ý của chúng tôi là gì khi chúng tôi nói rằng chúng tôi quan tâm đến việc WH nhỏ vì nếu nó
+
+130
+00:09:30.890 --> 00:09:35.030
+nhỏ hơn vật bên trái phải nhỏ theo cấp số nhân
+
+131
+00:09:35.030 --> 00:09:38.480
+cụ thể trong bài báo này mà bạn có thể nhấp vào ở phía dưới nếu bạn
+
+132
+00:09:38.480 --> 00:09:42.050
+quan tâm pascale mới nhất tôi sẽ chỉ ra rằng nếu
+
+133
+00:09:42.050 --> 00:09:47.180
+giá trị riêng lớn nhất của ma trận trọng số wh nhỏ hơn 1 thì độ dốc này trên
+
+134
+00:09:47.180 --> 00:09:50.900
+bên trái sẽ thu hẹp theo cấp số nhân và bạn có thể thấy
+
+135
+00:09:50.900 --> 00:09:54.050
+Theo trực giác tại sao điều này là đúng vì vậy nếu bạn biết như một giả định đơn giản hóa, chúng tôi
+
+136
+00:09:54.050 --> 00:09:57.980
+giả sử rằng wh không phải là một ma trận mà chỉ đơn giản là một vô hướng chỉ có một
+
+137
+00:09:57.980 --> 00:10:01.940
+số thì bạn có thể thấy tại sao nếu số đó lớn hơn một thì
+
+138
+00:10:01.940 --> 00:10:05.240
+toàn bộ mọi thứ sẽ nổ tung và nếu con số đó ít hơn một thì nó
+
+139
+00:10:05.240 --> 00:10:09.970
+sẽ thu hẹp theo cấp số nhân khi bạn nhân lại cùng một số một lần nữa
+
+140
+00:10:09.970 --> 00:10:14.570
+vì vậy bạn có thể kiểm tra giấy để biết thêm chi tiết nhưng ở đây ràng buộc là một
+
+141
+00:10:14.570 --> 00:10:19.280
+một phần vì nó có tính phi tuyến sigmoid và điều đó dựa trên
+
+142
+00:10:19.280 --> 00:10:26.470
+Giới hạn của những gì chúng ta biết là tiêu chuẩn của hàm sigmoid có thể là như vậy
+
+143
+00:10:26.470 --> 00:10:32.480
+cho bạn thấy tại sao nếu ma trận wh nhỏ hoặc nếu giá trị riêng lớn nhất của nó nhỏ
+
+144
+00:10:32.480 --> 00:10:35.420
+sau đó chúng ta sẽ có các thành phần biến mất và tương tự nếu bạn kiểm tra
+
+145
+00:10:35.420 --> 00:10:39.200
+ra giấy bạn có thể thấy rằng có một bằng chứng tương tự liên quan nếu lớn nhất
+
+146
+00:10:39.200 --> 00:10:43.850
+eigenvalue lớn hơn 1/2 có các thành phần tiếp xúc vì vậy đó là khi
+
+147
+00:10:43.850 --> 00:10:50.870
+độ dốc ngày càng lớn hơn khi bạn backprop tiếp tục ổn, vì vậy hy vọng tôi đã
+
+148
+00:10:50.870 --> 00:10:53.780
+thuyết phục bạn rằng thành phần vanch là một hiện tượng
+
+149
+00:10:53.780 --> 00:10:58.280
+xảy ra ở kiến ​​RN nhưng tôi chưa nói tại sao đây là vấn đề vậy tại sao nên
+
+150
+00:10:58.280 --> 00:11:02.090
+chúng tôi xem điều này là một điều xấu nếu độ dốc ngày càng lớn hơn
+
+151
+00:11:02.090 --> 00:11:05.990
+hoặc nhỏ hơn và nhỏ hơn khi bạn gặp vấn đề xấu, vì vậy đây là một hình ảnh
+
+152
+00:11:05.990 --> 00:11:11.030
+điều đó có thể minh họa tại sao nó là một điều xấu như vậy trước khi cho rằng chúng ta
+
+153
+00:11:11.030 --> 00:11:15.139
+suy nghĩ về những gì mất mát ở bước thứ tư với
+
+154
+00:11:15.139 --> 00:11:18.410
+tôn trọng những ngày sinh viên đầu tiên và chúng ta có tình huống này
+
+155
+00:11:18.410 --> 00:11:22.699
+độ dốc ngày càng nhỏ hơn khi nó đi lùi nhưng sau đó nghĩ
+
+156
+00:11:22.699 --> 00:11:26.569
+về độ dốc của giả sử sự mất mát ở bước thứ hai cũng với
+
+157
+00:11:26.569 --> 00:11:30.229
+liên quan đến trạng thái ẩn đầu tiên vì vậy tôi đại diện cho điều đó bằng mũi tên màu cam
+
+158
+00:11:30.229 --> 00:11:36.529
+và quan điểm của tôi ở đây là cường độ của tín hiệu gradient từ
+
+159
+00:11:36.529 --> 00:11:40.999
+gần bằng lớn hơn rất nhiều so với cường độ của tín hiệu gradient từ
+
+160
+00:11:40.999 --> 00:11:46.970
+ở xa và điều này có nghĩa là khi bạn cập nhật mô hình của bạn sẽ báo hiệu tín hiệu
+
+161
+00:11:46.970 --> 00:11:49.369
+rằng bạn đang đến gần sẽ lớn hơn nhiều so với
+
+162
+00:11:49.369 --> 00:11:52.850
+tín hiệu từ xa rằng về cơ bản bạn sẽ chỉ học bạn
+
+163
+00:11:52.850 --> 00:11:56.749
+sẽ tối ưu hóa đối với các hiệu ứng gần đó và không lâu dài
+
+164
+00:11:56.749 --> 00:12:02.419
+vì vậy bạn sẽ mất các hiệu ứng dài hạn bên trong
+
+165
+00:12:02.419 --> 00:12:16.009
+gần đây có bất kỳ câu hỏi nào về điều này vâng James không chỉ một trường hợp
+
+166
+00:12:16.009 --> 00:12:20.809
+thuật ngữ thần kinh nên có một mất mát nhất định nhưng bạn không nghe nói tôi nên có một
+
+167
+00:12:20.809 --> 00:12:24.169
+thực tế lớn hơn như bạn biết bạn đang cập nhật tổng trọng số trên
+
+168
+00:12:24.169 --> 00:12:28.579
+các chuỗi khác nhau ổn, vì vậy tôi nghĩ rằng quan sát là
+
+169
+00:12:28.579 --> 00:12:32.419
+cho rằng ví dụ mô hình hóa ngôn ngữ, bạn có thể tổng kết qua nhiều
+
+170
+00:12:32.419 --> 00:12:35.059
+mất mát có một mất mát trong mỗi bước và bạn tổng hợp tất cả chúng và đó là của bạn
+
+171
+00:12:35.059 --> 00:12:39.319
+tổn thất tổng thể thì bạn muốn cập nhật thêm về những mất mát gần đó
+
+172
+00:12:39.319 --> 00:12:43.519
+Hơn cả những mất mát vì vậy tôi nghĩ là đúng vậy nếu thiết kế chức năng mục tiêu của bạn
+
+173
+00:12:43.519 --> 00:12:47.600
+đó có phải là số tiền được phân bổ trong mỗi bước không thì bạn muốn đợi tất cả
+
+174
+00:12:47.600 --> 00:12:52.850
+Họ cũng nghĩ rằng quan điểm của tôi là về ảnh hưởng của
+
+175
+00:12:52.850 --> 00:12:55.100
+hành động của ma trận trọng lượng ở giai đoạn đầu này
+
+176
+00:12:55.100 --> 00:12:58.730
+ảnh hưởng của nó đến một mất mát gần đó là gì và ảnh hưởng này đến một
+
+177
+00:12:58.730 --> 00:13:04.600
+mất mát ở xa và do sự năng động của cách thức biến mất
+
+178
+00:13:04.600 --> 00:13:09.769
+Vấn đề hoạt động sau đó ảnh hưởng đến sự mất mát là rất nhiều sẽ là nhiều
+
+179
+00:13:09.769 --> 00:13:12.559
+ít hơn ảnh hưởng gần đó và tôi sẽ cung cấp thêm một số ngôn ngữ học
+
+180
+00:13:12.559 --> 00:13:16.549
+ví dụ sau về lý do tại sao bạn có thể muốn tìm hiểu các kết nối xa hơn
+
+181
+00:13:16.549 --> 00:13:19.759
+Vì vậy, vấn đề cơ bản là trong các tình huống mà bạn muốn học
+
+182
+00:13:19.759 --> 00:13:22.549
+kết nối giữa một cái gì đó xảy ra sớm và một cái gì đó xảy ra
+
+183
+00:13:22.549 --> 00:13:25.940
+sau đó bạn sẽ không thể học được kết nối đó
+
+184
+00:13:25.940 --> 00:13:31.720
+vì vậy chúng ta sẽ thấy một số ví dụ về động lực trong một phút bất kỳ câu hỏi nào khác về điều này
+
+185
+00:13:33.490 --> 00:13:43.810
+vâng, bạn nói tại sao bạn nói về độ pH như j-th giống như một H
+
+186
+00:13:43.810 --> 00:13:49.190
+tham số đúng yeah w okay đó là một câu hỏi tuyệt vời vì vậy bạn
+
+187
+00:13:49.190 --> 00:13:54.410
+hỏi tại sao chúng ta quan tâm đến một số loại DJ của DH cho rằng chúng ta không
+
+188
+00:13:54.410 --> 00:14:00.290
+cập nhật kích hoạt H HSN không phải chờ đợi, lý do tại sao chúng tôi nghĩ về điều đó
+
+189
+00:14:00.290 --> 00:14:05.030
+là bởi vì khi bạn nghĩ về DJ của TW, đó là điều mà chúng ta
+
+190
+00:14:05.030 --> 00:14:10.040
+sẽ cập nhật điều đó luôn luôn là về mặt DJ của DH tại một số điểm
+
+191
+00:14:10.040 --> 00:14:14.270
+đúng vậy để suy nghĩ về W bạn biết và cách nó hoạt động trên sự biến đổi
+
+192
+00:14:14.270 --> 00:14:19.070
+từ h1 đến h2 rồi DJ cho W ở vị trí đó sẽ phải trải qua
+
+193
+00:14:19.070 --> 00:14:24.950
+DJ cho d h2 vì vậy nếu chúng tôi đoán các thành phần biến mất khi chúng tôi tuyên truyền trở lại
+
+194
+00:14:24.950 --> 00:14:27.830
+hơn nữa nó giống như một nút cổ chai thì bạn chắc chắn sẽ đi
+
+195
+00:14:27.830 --> 00:14:31.490
+đã trục xuất các thành phần khi chúng ảnh hưởng đến ma trận tái phát của chúng ở đó và
+
+196
+00:14:31.490 --> 00:14:43.370
+thực sự là ma trận cung cấp cho đầu vào ổn chứ tôi sẽ chuyển sang ngay bây giờ
+
+197
+00:14:43.370 --> 00:14:46.880
+một cách khác để giải thích tại sao các thành phần biến mất là một vấn đề là bạn có thể
+
+198
+00:14:46.880 --> 00:14:51.980
+nghĩ về nó như độ dốc bạn có thể nghĩ về nó như là thước đo hiệu quả của
+
+199
+00:14:51.980 --> 00:14:56.030
+quá khứ về tương lai vì vậy chúng tôi thực sự đã nói về độ dốc nhỏ này là
+
+200
+00:14:56.030 --> 00:15:00.260
+như nói nếu tôi thay đổi trọng lượng này hoặc kích hoạt một chút thì bao nhiêu
+
+201
+00:15:00.260 --> 00:15:05.090
+và nó ảnh hưởng đến điều này như thế nào trong tương lai, đặc biệt là nếu độ dốc của chúng ta
+
+202
+00:15:05.090 --> 00:15:09.770
+đang trở nên nhỏ bé một cách đáng kinh ngạc trong khoảng cách xa hơn, hãy nói từ bước tới
+
+203
+00:15:09.770 --> 00:15:16.160
+bước T đến bước T cộng n thì chúng ta không thể biết liệu trong một trong hai tình huống như vậy
+
+204
+00:15:16.160 --> 00:15:20.210
+tình huống đầu tiên có lẽ là không có sự phụ thuộc giữa bước T và bước T
+
+205
+00:15:20.210 --> 00:15:25.160
+cộng với M trong dữ liệu nên có lẽ chúng ta đang học về một nhiệm vụ trong đó trong nhiệm vụ
+
+206
+00:15:25.160 --> 00:15:30.140
+thực sự không có mối liên hệ hay mối quan hệ thu thập nào được học giữa những gì
+
+207
+00:15:30.140 --> 00:15:33.410
+xảy ra ở bước T và những gì xảy ra ở bước T cộng với M nên thực sự không có gì
+
+208
+00:15:33.410 --> 00:15:36.680
+được học và thực sự đúng là bạn nên biết nhỏ
+
+209
+00:15:36.680 --> 00:15:39.470
+độ dốc đối với hai điều đó nhưng điều này
+
+210
+00:15:39.470 --> 00:15:43.790
+khả năng là có, có một mối liên hệ thực sự giữa hai điều đó trong
+
+211
+00:15:43.790 --> 00:15:46.820
+dữ liệu và trong nhiệm vụ và thực sự lý tưởng chúng ta nên học
+
+212
+00:15:46.820 --> 00:15:51.890
+kết nối nhưng chúng tôi có các tham số sai trong mô hình của chúng tôi để nắm bắt điều này
+
+213
+00:15:51.890 --> 00:15:55.820
+điều và do đó đó là lý do tại sao độ dốc nhỏ vì mô hình
+
+214
+00:15:55.820 --> 00:15:59.780
+không thấy chúng là kết nối nên chúng ta không học được sự phụ thuộc thực sự giữa
+
+215
+00:15:59.780 --> 00:16:03.650
+hai điều này và vấn đề với vấn đề độ dốc biến mất là
+
+216
+00:16:03.650 --> 00:16:06.890
+chúng ta không thể nói trong tình huống này trong hai tình huống này
+
+217
+00:16:06.890 --> 00:16:10.790
+Không sao cả nên đây là lý thuyết khá hay. Tôi nghĩ ví dụ này nên
+
+218
+00:16:10.790 --> 00:16:15.050
+làm cho nó rõ hơn một chút tại sao vấn đề gradient biến mất là xấu như vậy
+
+219
+00:16:15.050 --> 00:16:18.860
+tuần trước chúng tôi đã học về các mô hình ngôn ngữ RNN và nếu bạn nhớ ngôn ngữ
+
+220
+00:16:18.860 --> 00:16:22.010
+mô hình hóa là một nhiệm vụ trong đó bạn có một số loại văn bản và sau đó bạn đang cố gắng
+
+221
+00:16:22.010 --> 00:16:27.530
+dự đoán những từ tiếp theo vì vậy đây là một đoạn văn bản khi cô ấy cố gắng
+
+222
+00:16:27.530 --> 00:16:30.950
+in vé của cô ấy, cô ấy thấy rằng hoàng tử hết mực cô ấy đã đến
+
+223
+00:16:30.950 --> 00:16:34.910
+Các cửa hàng văn phòng phẩm để mua thêm mực, nó đã quá đắt sau khi cài đặt
+
+224
+00:16:34.910 --> 00:16:38.810
+mực vào máy in cuối cùng cô ấy đã in cho cô ấy và khiến ai đó hét lên
+
+225
+00:16:38.810 --> 00:16:43.940
+tại sao bạn nghĩ um vé tiếp theo có chính xác để bạn dễ dàng
+
+226
+00:16:43.940 --> 00:16:46.880
+làm bởi vì nó hợp lý về mặt logic nếu đó là điều cô ấy đang cố gắng
+
+227
+00:16:46.880 --> 00:16:49.850
+làm điều đó cô ấy sẽ làm một khi cô ấy đi đường vòng cho
+
+228
+00:16:49.850 --> 00:16:56.960
+đối với mực vì vậy câu hỏi là các mô hình ngôn ngữ NN của chúng ta có thể dễ dàng trả lời điều này
+
+229
+00:16:56.960 --> 00:17:00.980
+câu hỏi họ sẽ làm tốt ở ví dụ mô hình ngôn ngữ cụ thể này
+
+230
+00:17:00.980 --> 00:17:04.670
+đối với một ngôn ngữ RNN muốn làm tốt ở loại ví dụ này thì họ cần phải
+
+231
+00:17:04.670 --> 00:17:08.540
+học từ loại ví dụ này trong dữ liệu đào tạo vì vậy nếu thấy ví dụ này
+
+232
+00:17:08.540 --> 00:17:11.869
+trong dữ liệu đào tạo thì mẹ ngôn ngữ RNN sẽ cần mô hình hóa
+
+233
+00:17:11.869 --> 00:17:15.739
+phụ thuộc tìm hiểu sự kết nối giữa sự xuất hiện của vé từ sớm
+
+234
+00:17:15.740 --> 00:17:21.710
+trên bảy bước và vé từ mục tiêu ở cuối nhưng nếu chúng ta có
+
+235
+00:17:21.710 --> 00:17:26.300
+biến mất vấn đề độ dốc sau đó các gradient của bạn biết bước cuối cùng
+
+236
+00:17:26.300 --> 00:17:29.540
+bước đối với bước đầu sẽ rất nhỏ bởi vì đó là một
+
+237
+00:17:29.540 --> 00:17:32.600
+khoảng cách khá dài phải và điều này có nghĩa là mô hình sẽ được
+
+238
+00:17:32.600 --> 00:17:37.730
+không thể học được sự phụ thuộc này một cách dễ dàng hoặc hoàn toàn vì vậy nếu mô hình không thể học là
+
+239
+00:17:37.730 --> 00:17:40.970
+loại phụ thuộc trong quá trình đào tạo thì mô hình sẽ không thể
+
+240
+00:17:40.970 --> 00:17:46.010
+dự đoán các loại phụ thuộc đường dài tương tự thời gian thử nghiệm ổn ở đây
+
+241
+00:17:46.010 --> 00:17:52.010
+một ví dụ khác đây là một đoạn văn bản mà văn bản nói và đây không phải là một văn bản đầy đủ
+
+242
+00:17:52.010 --> 00:17:54.420
+câu này chỉ là một phần câu nó nói
+
+243
+00:17:54.420 --> 00:17:58.560
+tác giả của những cuốn sách trống và tôi sẽ cung cấp cho bạn hai lựa chọn
+
+244
+00:17:58.560 --> 00:18:04.800
+đó là nhà văn của những cuốn sách hoặc nhà văn của những cuốn sách một lần nữa
+
+245
+00:18:04.800 --> 00:18:08.940
+hét lên cái nào bạn nghĩ đó là tất cả đúng
+
+246
+00:18:08.940 --> 00:18:12.990
+vì vậy câu trả lời đúng một câu tiếp tục đúng có thể của câu sẽ là
+
+247
+00:18:12.990 --> 00:18:17.040
+sự lựa chọn đúng đắn của những cuốn sách đang lên kế hoạch cho phần tiếp theo mà tôi không thể nghĩ đến việc tiếp tục
+
+248
+00:18:17.040 --> 00:18:23.010
+mà đi đúng nơi những cuốn sách sẽ là Carrasco chính xác để
+
+249
+00:18:23.010 --> 00:18:26.340
+Lý do tại sao tôi đưa ra ví dụ này là vì điều này cho thấy một loại căng thẳng
+
+250
+00:18:26.340 --> 00:18:33.350
+giữa hai điều được gọi là hồi quy cú pháp và một số lần truy cập tuần tự như vậy
+
+251
+00:18:33.350 --> 00:18:38.460
+cú pháp cú pháp là ý tưởng để dự đoán chính xác từ tiếp theo
+
+252
+00:18:38.460 --> 00:18:43.920
+nên nhiều hơn là những người viết từ là loại cú pháp
+
+253
+00:18:43.920 --> 00:18:48.180
+từ đóng ở đây vì vậy chúng tôi nói rằng nhà văn của những cuốn sách là bởi vì đó là nhà văn
+
+254
+00:18:48.180 --> 00:18:53.730
+vì vậy bạn có thể xem đây là người viết từ và gần gũi về mặt cú pháp bởi vì nếu
+
+255
+00:18:53.730 --> 00:18:57.030
+bạn đã xem xét các phần phụ thuộc chẳng hạn, sau đó sẽ có một con đường ngắn
+
+256
+00:18:57.030 --> 00:19:06.090
+Ngược lại, trong cây đó, sự hồi quy tuần tự là đơn giản hơn
+
+257
+00:19:06.090 --> 00:19:11.430
+khái niệm về cách các từ gần chỉ trong câu như một chuỗi các từ như vậy
+
+258
+00:19:11.430 --> 00:19:14.670
+trong các ví dụ này và gần đây là một cuốn sách liên tục bởi vì chúng
+
+259
+00:19:14.670 --> 00:19:18.660
+ngay cạnh nhau vì vậy lý do tôi đưa ra điều này là vì
+
+260
+00:19:18.660 --> 00:19:23.280
+thứ hai sẽ không chính xác nhưng đó là một lựa chọn hấp dẫn bởi vì nếu
+
+261
+00:19:23.280 --> 00:19:27.810
+bạn hầu như chỉ chú ý đến những điều xảy ra gần đây
+
+262
+00:19:27.810 --> 00:19:32.820
+có thể bị phân tâm và nghĩ rằng những cuốn sách nghe có vẻ đúng nên
+
+263
+00:19:32.820 --> 00:19:37.380
+vấn đề ở đây là hình ảnh của chính chúng ta mô hình tất cả những gì bạn đang học hỏi từ
+
+264
+00:19:37.380 --> 00:19:43.140
+lần truy cập tuần tự hơn lần truy cập cú pháp và điều này một phần là do
+
+265
+00:19:43.140 --> 00:19:46.260
+biến mất vấn đề độ dốc bởi vì đặc biệt có lẽ nếu bạn
+
+266
+00:19:46.260 --> 00:19:50.400
+từ liên quan đến cú pháp thực sự là loại từ xa thì nó có thể nhận được
+
+267
+00:19:50.400 --> 00:19:54.630
+thực sự khó sử dụng thông tin từ từ cú pháp gần đây đặc biệt
+
+268
+00:19:54.630 --> 00:19:59.880
+nếu có nhiều tín hiệu mạnh từ từ gần đây liên tục
+
+269
+00:19:59.880 --> 00:20:03.930
+là những bài báo cho thấy các mô hình ngôn ngữ RNN mắc phải loại lỗi nói này
+
+270
+00:20:03.930 --> 00:20:06.610
+thay vì họ làm cho loại lỗi này
+
+271
+00:20:06.610 --> 00:20:10.030
+thường xuyên hơn bạn muốn đặc biệt là nếu bạn có nhiều trong số này
+
+272
+00:20:10.030 --> 00:20:13.990
+những từ gây mất tập trung như những cuốn sách ở giữa những từ bạn đang cố gắng
+
+273
+00:20:13.990 --> 00:20:20.890
+dự đoán và từ thực sự mà bạn nên đề cập đến ổn
+
+274
+00:20:20.890 --> 00:20:29.710
+tất cả các câu hỏi về điều này đều chuyển sang vì vậy chúng tôi đề cập ngắn gọn rằng phát nổ
+
+275
+00:20:29.710 --> 00:20:34.030
+thành phần là một vấn đề vì vậy tôi sẽ giải thích ngắn gọn tại sao lại phát nổ
+
+276
+00:20:34.030 --> 00:20:38.650
+độ dốc một vấn đề và tại sao nó lại trông như thế nào vậy lý do tại sao
+
+277
+00:20:38.650 --> 00:20:43.120
+Độ dốc phát nổ là một vấn đề là nếu bạn nhớ đây là cách SGG hoạt động, chúng tôi
+
+278
+00:20:43.120 --> 00:20:47.380
+nói rằng các tham số mới của mô hình mà chúng tôi đại diện bởi theta bằng với
+
+279
+00:20:47.380 --> 00:20:50.740
+những lời hứa cũ và sau đó bạn thực hiện một số bước theo hướng tiêu cực
+
+280
+00:20:50.740 --> 00:20:55.390
+độ dốc vì bạn đang cố gắng giảm thiểu J cuối cùng nên vấn đề là
+
+281
+00:20:55.390 --> 00:21:00.790
+rằng nếu độ dốc của bạn thực sự lớn thì bước cập nhật SGD của bạn sẽ
+
+282
+00:21:00.790 --> 00:21:03.880
+trở nên thực sự lớn quá, vì vậy bạn sẽ tiến một bước rất lớn và bạn
+
+283
+00:21:03.880 --> 00:21:08.049
+sẽ thay đổi mạnh mẽ các tham số mô hình của bạn theta và điều này có nghĩa là
+
+284
+00:21:08.049 --> 00:21:13.750
+bạn có thể kết thúc với một số cập nhật xấu, cuối cùng chúng tôi sẽ thực hiện hai bước lớn hơn và chúng tôi
+
+285
+00:21:13.750 --> 00:21:17.650
+thay đổi các tham số quá nhiều và điều này có nghĩa là chúng ta có một sự thay đổi lớn
+
+286
+00:21:17.650 --> 00:21:23.340
+bước và chúng tôi kết thúc ở một số khu vực nơi các tham số thực sự rất xấu
+
+287
+00:21:23.340 --> 00:21:26.799
+với ví dụ rằng họ có thể có tổn thất lớn hơn nhiều so với họ có
+
+288
+00:21:26.799 --> 00:21:33.700
+trước đó trong trường hợp xấu nhất, điều này thường có thể biểu hiện khi nhìn thấy vô số hoặc
+
+289
+00:21:33.700 --> 00:21:39.429
+Nan không phải là một số trong mạng của bạn khi bạn đang đào tạo nó trong thực tế vì vậy điều này
+
+290
+00:21:39.429 --> 00:21:43.179
+có thể xảy ra bởi vì nếu bạn thực hiện một bước lớn như vậy mà có thể bạn cập nhật
+
+291
+00:21:43.179 --> 00:21:46.809
+tham số nhiều đến mức bây giờ chúng là vô cực hoặc trừ vô cùng một cái gì đó
+
+292
+00:21:46.809 --> 00:21:49.630
+cứ như thế thì bạn sẽ có tất cả những điểm yếu này trong các hoạt động của mình
+
+293
+00:21:49.630 --> 00:21:52.870
+cũng như sau đó tất cả những mất mát của bạn sẽ là vô cùng và toàn bộ
+
+294
+00:21:52.870 --> 00:21:56.110
+hoàn toàn không hoạt động nên rất khó chịu khi điều này xảy ra
+
+295
+00:21:56.110 --> 00:21:59.770
+và không may xảy ra khá thường xuyên và nếu có thì bạn phải
+
+296
+00:21:59.770 --> 00:22:02.830
+về cơ bản khởi động lại đào tạo từ một số điểm kiểm tra trước đó trước khi bạn có
+
+297
+00:22:02.830 --> 00:22:06.220
+Nance và vô số vì không có cách nào cứu vãn nó từ cái mới của nó
+
+298
+00:22:06.220 --> 00:22:12.309
+Vì vậy, một giải pháp cho vấn đề gradient bùng nổ này là giải pháp
+
+299
+00:22:12.309 --> 00:22:16.870
+thực sự khá đơn giản và kỹ thuật này được gọi là cắt độ dốc
+
+300
+00:22:16.870 --> 00:22:19.480
+ý tưởng chính của việc cắt gradient là
+
+301
+00:22:19.480 --> 00:22:24.250
+nếu định mức của gradient của bạn lớn hơn một số ngưỡng và ngưỡng là
+
+302
+00:22:24.250 --> 00:22:28.950
+một tham số siêu mà bạn chọn sau đó bạn muốn thu nhỏ gradient đó
+
+303
+00:22:28.950 --> 00:22:34.120
+trước khi bạn áp dụng bản cập nhật SGD, vì vậy trực giác là họ vẫn sẽ thực hiện
+
+304
+00:22:34.120 --> 00:22:38.170
+bước theo cùng một hướng bạn sẽ đảm bảo rằng đó là một bước nhỏ hơn để
+
+305
+00:22:38.170 --> 00:22:43.030
+ở đây tôi đã có một ảnh chụp màn hình của một số mã giả từ bài báo liên quan đó
+
+306
+00:22:43.030 --> 00:22:47.350
+đề xuất tạo cắt đã có một số phiên bản cắt độ dốc và đó là
+
+307
+00:22:47.350 --> 00:22:52.090
+khá đơn giản như bạn có thể thấy mũ G là vectơ là đạo hàm của
+
+308
+00:22:52.090 --> 00:22:56.890
+lỗi liên quan đến các tham số và nó nói rằng nếu định mức này
+
+309
+00:22:56.890 --> 00:23:00.430
+độ dốc lớn hơn ngưỡng thì bạn chỉ cần thu nhỏ nó xuống nhưng
+
+310
+00:23:00.430 --> 00:23:02.700
+Điều quan trọng cần lưu ý là nó vẫn chỉ theo cùng một hướng
+
+311
+00:23:02.700 --> 00:23:09.700
+đó chỉ là một bước nhỏ hơn nên đây là một bức tranh để cho thấy nó có thể diễn ra như thế nào
+
+312
+00:23:09.700 --> 00:23:14.380
+trong thực tế và đây là một sơ đồ từ sách giáo khoa học sâu
+
+313
+00:23:14.380 --> 00:23:21.100
+được liên kết trên trang web vì vậy những gì đang diễn ra ở đây là hình ảnh ở đây là
+
+314
+00:23:21.100 --> 00:23:26.380
+mất bề mặt của một RM đơn giản nên họ đã tạo ra một RN rất đơn giản thay vì có
+
+315
+00:23:26.380 --> 00:23:29.080
+một chuỗi các vectơ như các trạng thái ẩn
+
+316
+00:23:29.080 --> 00:23:33.070
+nó chỉ giả sử rằng mỗi trạng thái ẩn chỉ đơn giản là một vô hướng duy nhất này
+
+317
+00:23:33.070 --> 00:23:36.820
+có nghĩa là thay vì có ma trận trọng số W và vectơ sai lệch B, bạn có một
+
+318
+00:23:36.820 --> 00:23:40.660
+vô hướng W trong một vô hướng B vì vậy đó là lý do tại sao trong hình bạn chỉ có hai
+
+319
+00:23:40.660 --> 00:23:45.490
+không gian tham số thứ nguyên và sau đó trục z là mất của bạn
+
+320
+00:23:45.490 --> 00:23:51.190
+Vì vậy, ở đây tổn thất cao là xấu và tổn thất thấp là tốt và những gì bạn đang cố gắng để có được
+
+321
+00:23:51.190 --> 00:23:54.820
+ở đây trong bức ảnh này bạn đã có loại clip này rồi, bạn có cái này rất
+
+322
+00:23:54.820 --> 00:24:01.090
+vách đá dốc đứng nơi mất mát thay đổi rất nhanh và vách đá này thực sự
+
+323
+00:24:01.090 --> 00:24:04.900
+nguy hiểm vì nó có độ dốc lớn và bạn có thể gặp nguy hiểm
+
+324
+00:24:04.900 --> 00:24:09.580
+thực hiện một bước cập nhật thực sự lớn bởi vì bạn đang ở trong khu vực có độ dốc thực sự
+
+325
+00:24:09.580 --> 00:24:14.740
+độ dốc ở bên trái bạn đã có một kịch bản có thể xảy ra về những gì có thể xảy ra
+
+326
+00:24:14.740 --> 00:24:20.260
+nếu bạn không cắt độ dốc ở bên trái, bạn có thể thấy rằng bạn bắt đầu
+
+327
+00:24:20.260 --> 00:24:26.290
+loại ở dưới cùng của vách đá và bạn có một vài cập nhật nhỏ và sau đó trong
+
+328
+00:24:26.290 --> 00:24:29.500
+đặc biệt là nó tạo ra một bản cập nhật xấu bởi vì bạn thấy có một loại nhúng nhỏ
+
+329
+00:24:29.500 --> 00:24:33.070
+trước khi nó đi lên vách đá, vì vậy đây là mức tối thiểu cục bộ thực sự tối ưu
+
+330
+00:24:33.070 --> 00:24:37.509
+bạn đang cố gắng để ở dưới đáy của cái mương nhỏ đó và nó
+
+331
+00:24:37.509 --> 00:24:41.409
+bắt đầu từ gần mép mương đó và sau đó có một âm
+
+332
+00:24:41.409 --> 00:24:45.940
+gradient đi sâu vào nó nhưng không may là loại cập nhật quá mức và nó
+
+333
+00:24:45.940 --> 00:24:49.299
+cuối cùng phải đi một quãng đường dài ra khỏi vách đá để bây giờ nó ở trong tình huống tồi tệ này
+
+334
+00:24:49.299 --> 00:24:52.450
+đó là bản cập nhật của Bad và bây giờ nó đã bị tổn thất lớn hơn nhiều so với trước đây của chúng tôi
+
+335
+00:24:52.450 --> 00:24:56.740
+Vì vậy, bây giờ khi nó ở trên vách đá một lần nữa, nó đo độ dốc và
+
+336
+00:24:56.740 --> 00:25:00.279
+độ dốc rất dốc phải độ dốc rất lớn vì vậy khi cần
+
+337
+00:25:00.279 --> 00:25:04.360
+một bản cập nhật liên quan đến độ dốc đó vì độ dốc quá lớn
+
+338
+00:25:04.360 --> 00:25:08.440
+thực hiện một bước thực sự lớn và đó là một trong những bên phải bạn có thể thấy
+
+339
+00:25:08.440 --> 00:25:11.830
+bước sang phải để cập nhật rất tệ vì đó chỉ là
+
+340
+00:25:11.830 --> 00:25:17.250
+ném nó thực sự xa đến một số cấu hình khá ngẫu nhiên của W và B
+
+341
+00:25:17.250 --> 00:25:21.309
+Vì vậy, ở bên trái, bạn có thể thấy những gì có thể sai nếu bạn thực hiện những điều này thực sự lớn
+
+342
+00:25:21.309 --> 00:25:26.230
+các bước vì bạn muốn các khu vực của bạn có độ dốc rất cao, do đó, ngược lại
+
+343
+00:25:26.230 --> 00:25:29.700
+bên phải bạn có thể thấy những gì có thể xảy ra nếu bạn có cắt độ dốc và
+
+344
+00:25:29.700 --> 00:25:34.360
+nó ít quyết liệt hơn đúng không, bạn có một kiểu mẫu tương tự
+
+345
+00:25:34.360 --> 00:25:37.509
+Một vài bước vào mương và cuối cùng nó đi lên vách đá một chút
+
+346
+00:25:37.509 --> 00:25:40.899
+nhưng không quá nhiều vì gradient là clip và sau đó là trên vách đá và
+
+347
+00:25:40.899 --> 00:25:43.720
+lại có một độ dốc thực sự dốc nhưng nó không có một bước tiến lớn như vậy
+
+348
+00:25:43.720 --> 00:25:47.889
+bởi vì một lần nữa gradient được cắt bớt để nó quay trở lại để bạn có thể
+
+349
+00:25:47.889 --> 00:25:52.029
+thấy hợp lý bằng cách sử dụng phương pháp cắt độ dốc này, bạn đã có một loại
+
+350
+00:25:52.029 --> 00:25:55.629
+quy tắc cập nhật an toàn hơn khi bạn sẽ không thực hiện bất kỳ bước điên rồ lớn nào và
+
+351
+00:25:55.629 --> 00:25:59.110
+bạn có nhiều khả năng tìm thấy mức tối thiểu thực sự ở dưới cùng của
+
+352
+00:25:59.110 --> 00:26:05.190
+mương tôi nghĩ rằng có một câu hỏi trước đó tôi đã thấy một câu hỏi ở đây
+
+353
+00:26:06.779 --> 00:26:23.889
+Dù sao cũng vậy, câu hỏi nằm ở bài 3, bạn đã thấy quảng cáo một
+
+354
+00:26:23.889 --> 00:26:28.570
+thuật toán tối ưu hóa có cái này gọi là động lượng
+
+355
+00:26:28.570 --> 00:26:32.860
+nói rằng giống như động lực vật lý trong thế giới thực mà nếu bạn đã
+
+356
+00:26:32.860 --> 00:26:39.279
+Đi cùng một hướng trong một thời gian sau đó bạn có thể thực hiện các bước lớn hơn tôi
+
+357
+00:26:39.279 --> 00:26:41.889
+suy nghĩ và nếu gần đây bạn đã thay đổi hướng thì bạn nên thực hiện
+
+358
+00:26:41.889 --> 00:26:46.659
+các bước nhỏ hơn và tôi nghĩ có một yếu tố khác cũng là nơi bạn phân chia
+
+359
+00:26:46.659 --> 00:26:49.190
+bởi một số yếu tố vì vậy nó là một loại tương tự
+
+360
+00:26:49.190 --> 00:26:52.040
+ý tưởng tôi cho rằng có một tiêu chí khác nhau đúng vậy cả hai đều có
+
+361
+00:26:52.040 --> 00:26:56.270
+điểm chung là nó là một tiêu chí để khi nào tăng hoặc giảm quy mô
+
+362
+00:26:56.270 --> 00:27:00.170
+kích thước của bước cập nhật của bạn và tôi nghĩ rằng chúng dựa trên các khái niệm khác nhau về
+
+363
+00:27:00.170 --> 00:27:03.290
+Khi nào bạn nên thực hiện các bước lớn hơn và khi nào bạn nên thực hiện các bước nhỏ khi
+
+364
+00:27:03.290 --> 00:27:07.460
+nên thận trọng hoặc ít thận trọng hơn nên tôi đoán ở đây tiêu chí là khác nhau
+
+365
+00:27:07.460 --> 00:27:10.220
+Đó là một tiêu chí đơn giản nói rằng nếu nó thực sự dốc thì hãy
+
+366
+00:27:10.220 --> 00:27:13.960
+cẩn thận vâng một câu hỏi khác
+
+367
+00:27:23.200 --> 00:27:36.430
+Những quy định nào ổn, vậy câu hỏi này có giống với việc thường xuyên hóa một số
+
+368
+00:27:36.430 --> 00:27:38.650
+loại đúng vì vậy tôi cho rằng có, có
+
+369
+00:27:38.650 --> 00:27:43.210
+Một số điểm chung vì vậy ví dụ chính quy l2 nói rằng bạn muốn
+
+370
+00:27:43.210 --> 00:27:50.290
+ví dụ ma trận trọng số của bạn để có một chỉ tiêu l2 nhỏ đúng và ý tưởng là
+
+371
+00:27:50.290 --> 00:27:54.100
+bạn đang cố gắng ngăn mô hình của mình vượt quá dữ liệu bằng cách tôi có
+
+372
+00:27:54.100 --> 00:27:57.130
+một số loại ràng buộc nói rằng bạn phải giữ trọng lượng của mình khá đơn giản
+
+373
+00:27:57.130 --> 00:28:01.240
+đó là giữ cho họ biết bạn nhỏ nên tôi cho rằng mối quan hệ là ở đây
+
+374
+00:28:01.240 --> 00:28:04.510
+chúng tôi nói rằng chúng tôi không muốn tiêu chuẩn của gradient quá lớn Tôi không
+
+375
+00:28:04.510 --> 00:28:08.710
+biết nếu điều này có liên quan đến quá mức và tôi đoán tôi phải suy nghĩ nhiều hơn
+
+376
+00:28:08.710 --> 00:28:12.970
+cẩn thận về điều đó nhưng tôi đoán đó là một loại ràng buộc tương tự mà bạn
+
+377
+00:28:12.970 --> 00:28:20.590
+đặt ok tôi sẽ chuyển sang bây giờ vì vậy chúng tôi đã nói về cách bạn có thể sửa chữa
+
+378
+00:28:20.590 --> 00:28:23.830
+vấn đề độ dốc bùng nổ với cắt độ dốc nhưng chúng ta chưa nói chuyện
+
+379
+00:28:23.830 --> 00:28:26.670
+về cách chúng tôi có thể khắc phục vấn đề độ dốc biến mất
+
+380
+00:28:26.670 --> 00:28:32.440
+Vì vậy, để tóm tắt lại, tôi nghĩ rằng một cách để mô tả vấn đề với sự biến mất
+
+381
+00:28:32.440 --> 00:28:37.270
+thành phần cuối cùng của chúng tôi là RNN quá khó để học
+
+382
+00:28:37.270 --> 00:28:41.320
+lưu giữ thông tin qua nhiều bước thời gian để trong ví dụ của chúng tôi với việc in ấn
+
+383
+00:28:41.320 --> 00:28:45.070
+vé và nhớ rằng đó là vé nên cô ấy muốn in bạn có thể
+
+384
+00:28:45.070 --> 00:28:48.790
+Nghĩ về nó vì thật khó để mô hình ngôn ngữ RNN dự đoán chính xác
+
+385
+00:28:48.790 --> 00:28:53.650
+vé vì theo cách nào đó quá khó để RN và lang gặp khó khăn khi học
+
+386
+00:28:53.650 --> 00:28:58.750
+giữ lại thông tin vé và sử dụng nó sau, vì vậy nếu bạn nhìn vào phương trình
+
+387
+00:28:58.750 --> 00:29:02.530
+cho vanilla RN kết thúc và cách chúng ta tính toán trạng thái ẩn dựa trên trạng thái trước
+
+388
+00:29:02.530 --> 00:29:05.770
+trạng thái ẩn và các đầu vào bạn có thể thấy rằng trạng thái ẩn là một cách
+
+389
+00:29:05.770 --> 00:29:10.300
+liên tục được viết lại, nó luôn được tính toán dựa trên các tuyến tính này
+
+390
+00:29:10.300 --> 00:29:14.290
+biến đổi và bạn biết tính phi tuyến tính nên không dễ dàng gì
+
+391
+00:29:14.290 --> 00:29:18.430
+bảo tồn thông tin từ người này sang bang khác nói riêng
+
+392
+00:29:18.430 --> 00:29:22.570
+bởi vì chúng tôi đưa nó thông qua chức năng phi tuyến tính này nên điều này thúc đẩy
+
+393
+00:29:22.570 --> 00:29:27.760
+chúng tôi hỏi điều gì về một RNN với một loại bộ nhớ riêng nếu chúng tôi có một số
+
+394
+00:29:27.760 --> 00:29:31.060
+loại nơi riêng biệt để lưu trữ thông tin mà chúng tôi muốn sử dụng sau này
+
+395
+00:29:31.060 --> 00:29:36.539
+sau đó điều này sẽ giúp RNN của chúng ta dễ dàng hơn trong việc học cách lưu giữ thông tin
+
+396
+00:29:36.539 --> 00:29:41.849
+qua nhiều bước thời gian, vì vậy đây là ý tưởng thúc đẩy đằng sau Ella Siam hoặc
+
+397
+00:29:41.849 --> 00:29:48.269
+trí nhớ ngắn hạn là nữ tu nên ý tưởng ở đây là LCM là một loại
+
+398
+00:29:48.269 --> 00:29:53.999
+RNN và nó đã trở lại vào năm 1997 và ý tưởng là đây là đề xuất
+
+399
+00:29:53.999 --> 00:29:59.070
+như một giải pháp rõ ràng cho vấn đề độ dốc biến mất, vì vậy một trong những vấn đề chính
+
+400
+00:29:59.070 --> 00:30:03.479
+Sự khác biệt ở đây là ở mỗi bước T thay vì chỉ có một trạng thái ẩn HT
+
+401
+00:30:03.479 --> 00:30:09.209
+chúng ta có cả trạng thái ẩn HT và trạng thái bán mà chúng ta biểu thị CT và cả hai
+
+402
+00:30:09.209 --> 00:30:15.329
+trong số này là các vectơ có cùng độ dài n và ý tưởng là ô có nghĩa là
+
+403
+00:30:15.329 --> 00:30:20.999
+để lưu trữ thông tin dài hạn của chúng tôi đó là trên các đơn vị bộ nhớ khác
+
+404
+00:30:20.999 --> 00:30:25.319
+Điều cực kỳ quan trọng là LS TM có thể mảng và viết và đọc
+
+405
+00:30:25.319 --> 00:30:29.459
+thông tin từ tế bào để bạn nghĩ về điều này giống như bộ nhớ trong
+
+406
+00:30:29.459 --> 00:30:32.519
+máy tính và bạn có thể thực hiện các thao tác đọc và viết và
+
+407
+00:30:32.519 --> 00:30:39.719
+xóa và đó là cách bạn sẽ giữ thông tin của bạn một siêu khác
+
+408
+00:30:39.719 --> 00:30:44.369
+Điều quan trọng là cách LS TM quyết định xem nó có muốn mảng không
+
+409
+00:30:44.369 --> 00:30:49.499
+viết đọc thông tin và quyết định bao nhiêu và thông tin đó là tất cả
+
+410
+00:30:49.499 --> 00:30:54.239
+được kiểm soát bởi các cổng này vì vậy ý ​​tưởng là các cổng cũng là chính họ
+
+411
+00:30:54.239 --> 00:31:00.749
+vectơ có độ dài m và ý tưởng là trên mỗi lần bước, mỗi phần tử của các phần tử này
+
+412
+00:31:00.749 --> 00:31:07.079
+các cổng là vectơ nằm ở khoảng từ 0 đến 1 nên ở đây 1 đại diện cho một
+
+413
+00:31:07.079 --> 00:31:12.029
+cổng mở và 0 đại diện cho một cổng đóng và bạn có thể có các giá trị ở bất cứ đâu trong
+
+414
+00:31:12.029 --> 00:31:15.539
+giữa những ý tưởng quá mức mà chúng ta sẽ củng cố trên slide tiếp theo nhưng
+
+415
+00:31:15.539 --> 00:31:18.959
+ý tưởng trên là nếu cánh cổng mở đại diện cho một số loại
+
+416
+00:31:18.959 --> 00:31:22.019
+thông tin được truyền qua và nếu cổng được đóng lại có nghĩa là
+
+417
+00:31:22.019 --> 00:31:26.849
+thông tin không đi qua ok nó là điều thực sự quan trọng cuối cùng là
+
+418
+00:31:26.849 --> 00:31:32.069
+rằng các cổng là động, chúng không chỉ được đặt ở một số giá trị không đổi cho
+
+419
+00:31:32.069 --> 00:31:35.579
+toàn bộ chuỗi chúng là động, có nghĩa là chúng khác nhau trên mỗi chuỗi
+
+420
+00:31:35.579 --> 00:31:40.019
+bước thời gian T và giá trị của chúng là quyết định cho dù chúng mở hay
+
+421
+00:31:40.019 --> 00:31:46.109
+đóng và theo cách nào được tính toán dựa trên bối cảnh hiện tại ok
+
+422
+00:31:46.109 --> 00:31:50.100
+vì vậy đây là phương trình để hiểu cái nào có thể làm cho nó rõ ràng hơn
+
+423
+00:31:50.100 --> 00:31:54.990
+vì vậy, giả sử chúng ta có một số chuỗi đầu vào XT và chúng ta muốn tính toán một
+
+424
+00:31:54.990 --> 00:32:00.240
+chuỗi trạng thái ẩn HT và trạng thái ô nhìn thấy T vì vậy đây là những gì xảy ra trên
+
+425
+00:32:00.240 --> 00:32:06.210
+Bước thời gian T bộ phương trình đầu tiên này cho bạn thấy ba cổng mà tôi đã nói
+
+426
+00:32:06.210 --> 00:32:10.590
+về trước nên cái đầu tiên được gọi là cổng quên và ý tưởng là
+
+427
+00:32:10.590 --> 00:32:15.270
+cái này đang kiểm soát những gì được giữ so với những gì bị lãng quên từ
+
+428
+00:32:15.270 --> 00:32:20.400
+ô trước nêu trạng thái bộ nhớ trước và bạn có thể thấy rằng cổng này quên
+
+429
+00:32:20.400 --> 00:32:25.680
+được tính dựa trên trạng thái ẩn trước đó trừ đi 1 và đầu vào hiện tại
+
+430
+00:32:25.680 --> 00:32:30.300
+Vì vậy, đó là những gì tôi muốn nói khi tôi nói rằng nó năng động và nó được tính toán
+
+431
+00:32:30.300 --> 00:32:36.480
+dựa trên bối cảnh hiện tại bạn cũng có thể thấy rằng nó được tính bằng cách sử dụng
+
+432
+00:32:36.480 --> 00:32:41.280
+Hàm sigmoid có nghĩa là ở đâu đó trong khoảng từ 0 đến 1 ok tiếp theo
+
+433
+00:32:41.280 --> 00:32:46.470
+cổng được gọi là cổng đầu vào và cổng này kiểm soát những phần nào của ô mới
+
+434
+00:32:46.470 --> 00:32:50.550
+nội dung được ghi vào ô nên ý tưởng là bạn có bộ nhớ này
+
+435
+00:32:50.550 --> 00:32:55.650
+tế bào và đây là loại kiểm soát như thế nào và những gì bạn nhận được để viết
+
+436
+00:32:55.650 --> 00:33:00.840
+ô nhớ ok và ô cuối cùng được gọi là cổng đầu ra nên cái này là
+
+437
+00:33:00.840 --> 00:33:06.390
+kiểm soát những phần nào của ô là đầu ra cho trạng thái ẩn để bạn có thể
+
+438
+00:33:06.390 --> 00:33:09.450
+xem nó giống như chức năng đọc phải không, chúng ta sẽ đọc một số
+
+439
+00:33:09.450 --> 00:33:12.180
+thông tin từ tế bào bộ nhớ của chúng tôi và điều đó sẽ được đưa vào ẩn của chúng tôi
+
+440
+00:33:12.180 --> 00:33:17.960
+tiểu bang và cổng này nó sẽ kiểm soát ok
+
+441
+00:33:17.960 --> 00:33:23.370
+vâng, đó chỉ là chức năng sigmoid như chúng tôi đã lưu ý trước đó, vì vậy tiếp theo
+
+442
+00:33:23.370 --> 00:33:28.620
+bộ phương trình cho thấy cách chúng tôi sử dụng các cổng này để dòng đầu tiên bạn có thể quan tâm
+
+443
+00:33:28.620 --> 00:33:34.110
+C này là nội dung ô mới, vì vậy đây là nội dung mới mà bạn muốn
+
+444
+00:33:34.110 --> 00:33:38.130
+ghi vào ô và điều này cũng được tính dựa trên ẩn trước đó của bạn
+
+445
+00:33:38.130 --> 00:33:42.240
+trạng thái trong đầu vào hiện tại của bạn và điều này trải qua ở độ tuổi phi tuyến tính vì vậy
+
+446
+00:33:42.240 --> 00:33:46.500
+đây là loại nội dung chính mà bạn đang tính toán dựa trên
+
+447
+00:33:46.500 --> 00:33:52.860
+bối cảnh và bạn muốn viết tiếng lóng internet này những gì đang xảy ra là
+
+448
+00:33:52.860 --> 00:33:58.350
+chúng ta sẽ sử dụng cổng quên để chọn lọc quên một số
+
+449
+00:33:58.350 --> 00:34:03.330
+thông tin từ ô nhớ trước và bạn có thể thấy rằng chúng tôi đang làm
+
+450
+00:34:03.330 --> 00:34:05.429
+sản phẩm L Weis này là những gì nhỏ
+
+451
+00:34:05.429 --> 00:34:10.619
+hình tròn là ý tưởng nếu bạn nhớ rằng FT là một vectơ đầy giá trị
+
+452
+00:34:10.619 --> 00:34:13.530
+trong khoảng từ 0 đến 1 khi bạn làm một sản phẩm thông minh
+
+453
+00:34:13.530 --> 00:34:17.639
+giữa ft và trạng thái tế bào trước CT trừ đi 1 thì về cơ bản bạn là gì
+
+454
+00:34:17.639 --> 00:34:20.940
+làm là bạn đang che giấu một số thông tin từ trước đó
+
+455
+00:34:20.940 --> 00:34:24.869
+trạng thái ẩn xin lỗi không có giai đoạn tế bào trước vì vậy khi F
+
+456
+00:34:24.869 --> 00:34:28.859
+là 1 thì bạn đang sao chép thông tin nhưng khi F bằng 0 thì bạn
+
+457
+00:34:28.859 --> 00:34:35.339
+loại bỏ thông tin mà bạn đang nêu ra hoặc đoán lại ok và
+
+458
+00:34:35.339 --> 00:34:40.859
+sau đó nửa còn lại của phương trình này lần IT C Tilda T là cổng đầu vào
+
+459
+00:34:40.859 --> 00:34:43.918
+kiểm soát phần nào của nội dung ô mới sẽ được viết
+
+460
+00:34:43.918 --> 00:34:51.658
+được ghi vào ô được rồi và điều cuối cùng chúng ta làm là chúng ta vượt qua ô
+
+461
+00:34:51.659 --> 00:34:56.159
+thông qua một trọng tải chỉ cần thêm một phi tuyến tính và sau đó bạn vượt qua
+
+462
+00:34:56.159 --> 00:35:01.079
+thông qua các cổng đầu ra và điều đó mang lại cho bạn ruột nên trong STM của chúng tôi
+
+463
+00:35:01.079 --> 00:35:04.980
+thường nghĩ về các trạng thái ẩn giống như kết quả đầu ra của RNN và
+
+464
+00:35:04.980 --> 00:35:09.630
+Lý do cho điều này là vì bạn xem các trạng thái tế bào này là
+
+465
+00:35:09.630 --> 00:35:13.200
+loại bộ nhớ trong thường không thể truy cập ra bên ngoài nhưng
+
+466
+00:35:13.200 --> 00:35:17.400
+các trạng thái ẩn là những phần bạn sẽ chuyển sang phần tiếp theo của
+
+467
+00:35:17.400 --> 00:35:23.670
+mô hình vì vậy đó là lý do tại sao chúng ta xem nó giống như đầu ra của mô hình và điều này
+
+468
+00:35:23.670 --> 00:35:27.780
+vâng, chỉ nhắc nhở rằng những vòng tròn đó là sản phẩm có yếu tố thông minh và đó là cách
+
+469
+00:35:27.780 --> 00:35:43.470
+chúng tôi áp dụng các cổng tôi không có bất kỳ câu hỏi về điều này ok để nhắc nhở
+
+470
+00:35:43.470 --> 00:35:50.220
+tất cả những thứ này là vectơ của một số Symington được rồi nên một số người học
+
+471
+00:35:50.220 --> 00:35:55.049
+tốt hơn từ các sơ đồ hơn phương trình và đây là một bản trình bày sơ đồ của
+
+472
+00:35:55.049 --> 00:35:58.589
+cùng một ý tưởng vì vậy đây là một sơ đồ thực sự tốt đẹp từ một bài đăng trên blog của Chris Ola
+
+473
+00:35:58.589 --> 00:36:02.190
+về LS TMS và đó là một nơi tốt để bắt đầu nếu bạn muốn có một trực quan
+
+474
+00:36:02.190 --> 00:36:07.829
+sự hiểu biết về STM là gì trong sơ đồ này, các hộp màu xanh lá cây đại diện cho
+
+475
+00:36:07.829 --> 00:36:13.109
+bước thời gian và phóng to ở giữa, xem điều gì đang xảy ra ở đây vậy
+
+476
+00:36:13.109 --> 00:36:17.280
+trong một bước, bạn có thể thấy sơ đồ này hiển thị giống hệt nhau
+
+477
+00:36:17.280 --> 00:36:19.660
+điều như sáu phương trình đã chỉ ra ở phần trước
+
+478
+00:36:19.660 --> 00:36:26.230
+trượt vì vậy điều đầu tiên chúng ta làm là sử dụng đầu vào hiện tại XT ở
+
+479
+00:36:26.230 --> 00:36:30.010
+phía dưới và trạng thái ẩn trước đó trừ đi một bên trái và chúng ta có thể sử dụng
+
+480
+00:36:30.010 --> 00:36:35.470
+máy tính đó quên cổng và bạn có thể thấy FT nằm trên mũi tên đó và sau đó
+
+481
+00:36:35.470 --> 00:36:40.330
+bạn áp dụng cổng quên cho ô trước đó và đó là điều tương tự
+
+482
+00:36:40.330 --> 00:36:44.890
+như đã quên một số nội dung của tế bào lần cuối rồi
+
+483
+00:36:44.890 --> 00:36:48.339
+sau đó, bạn có thể tính toán các cổng đầu vào và được tính toán theo
+
+484
+00:36:48.339 --> 00:36:54.280
+tương tự như cổng quên và sau đó bạn sử dụng hàm ý để quyết định phần nào
+
+485
+00:36:54.280 --> 00:37:00.250
+nội dung ô mới này được ghi vào ô và cung cấp cho bạn ô CT
+
+486
+00:37:00.250 --> 00:37:04.420
+vì vậy ở đây bạn có thể thấy rằng bạn tính toán IMP bạn nhận được cổng đầu vào và mới
+
+487
+00:37:04.420 --> 00:37:09.250
+Nội dung và sau đó bạn sử dụng nó để chuyển nó và viết nó vào ô cho đến bây giờ
+
+488
+00:37:09.250 --> 00:37:12.940
+Tôi đã có CT tế bào mới và sau đó, điều cuối cùng chúng ta cần làm là tính toán
+
+489
+00:37:12.940 --> 00:37:18.670
+cổng đầu ra mới đó và cuối cùng sử dụng cổng đầu ra để chọn
+
+490
+00:37:18.670 --> 00:37:23.230
+phần nào của nội dung ô bạn sẽ đọc và đặt vào phần ẩn mới
+
+491
+00:37:23.230 --> 00:37:28.750
+trạng thái HT vì vậy đó là điều tương tự như các phương trình chúng ta đã thấy trên
+
+492
+00:37:28.750 --> 00:37:52.930
+slide trước được rồi, vậy đó là CMS khác tại sao chúng ta lại áp dụng ở một cạnh
+
+493
+00:37:52.930 --> 00:37:57.550
+phương trình cuối cùng về điều này trên slide này tại sao chúng ta lập kế hoạch tại một h2
+
+494
+00:37:57.550 --> 00:38:07.859
+ô trước khi áp dụng cổng đầu ra, hãy xem yeah, vì vậy câu hỏi của bạn là
+
+495
+00:38:07.859 --> 00:38:19.510
+tế bào nội dung tế bào mới đã trải qua ở tuổi tôi không chắc lắm nên tôi
+
+496
+00:38:19.510 --> 00:38:22.869
+giả sử một câu trả lời chung chung là nó phải được đưa ra một số loại biểu cảm hơn
+
+497
+00:38:22.869 --> 00:38:29.170
+một số cách và đó không chỉ là áp dụng tuần tự thanh thiếu niên bởi vì bạn làm
+
+498
+00:38:29.170 --> 00:38:34.440
+Có cổng ở giữa vì vậy tôi cho rằng phải có một loại lý do
+
+499
+00:38:34.440 --> 00:38:37.830
+tương tự như khi bạn áp dụng một lay tuyến tính, bạn muốn có một
+
+500
+00:38:37.830 --> 00:38:41.220
+phi tuyến tính trước lớp tuyến tính tiếp theo tôi cho rằng có lẽ chúng ta đang xem
+
+501
+00:38:41.220 --> 00:38:50.940
+những trường hợp này là loại lớp tuyến tính, chắc chắn tôi sẽ tìm nó ổn
+
+502
+00:38:50.940 --> 00:38:59.040
+Alice yemm và nếu bạn nhớ chúng tôi là Oh câu hỏi quên bánh bạn không nhìn
+
+503
+00:38:59.040 --> 00:39:02.730
+ở trạng thái ô trước hoặc bạn chỉ cần nhìn vào trạng thái kết thúc mới và có vẻ như
+
+504
+00:39:02.730 --> 00:39:06.210
+giống như nếu bạn quyết định quên cái gì từ trạng thái tế bào, bạn nên
+
+505
+00:39:06.210 --> 00:39:10.619
+nhìn vào nó để câu hỏi là tại sao cổng quên chỉ được tính từ
+
+506
+00:39:10.619 --> 00:39:15.570
+trạng thái ẩn trước đó và đầu vào hiện tại tại sao nó không được tính dựa trên CT
+
+507
+00:39:15.570 --> 00:39:19.530
+trừ đi 1 bản thân nó hoặc bạn muốn nhìn vào điều đó để tìm hiểu xem
+
+508
+00:39:19.530 --> 00:39:24.710
+bạn muốn quên nó đi hay không đó là một câu hỏi khá hay
+
+509
+00:39:24.710 --> 00:39:29.369
+Vì vậy, tôi cho rằng một lý do tại sao bạn có thể nghĩ rằng điều này hoạt động tốt là nó
+
+510
+00:39:29.369 --> 00:39:34.680
+lsdm có thể đang học một thuật toán chung cho nơi nó lưu trữ khác nhau
+
+511
+00:39:34.680 --> 00:39:37.950
+Các loại thông tin trong tế bào phải, vì vậy có lẽ nó học được rằng trong này
+
+512
+00:39:37.950 --> 00:39:41.369
+vị trí cụ thể trong ô tôi tìm hiểu thông tin về đặc biệt này
+
+513
+00:39:41.369 --> 00:39:46.800
+điều ngữ nghĩa và sau đó trong tình huống này tôi muốn sử dụng hay không sử dụng
+
+514
+00:39:46.800 --> 00:39:50.339
+mà quên nó hoặc giữ nó nhưng vâng tôi hoàn toàn không thuyết phục được bản thân mình tại sao
+
+515
+00:39:50.339 --> 00:39:55.020
+bạn không muốn xem xét nội dung của chính tế bào để quyết định tôi
+
+516
+00:39:55.020 --> 00:40:02.670
+giả sử một điều cần chú ý là HT trừ 1 đã được đọc từ CT trừ 1 nên tôi
+
+517
+00:40:02.670 --> 00:40:05.310
+giả sử có một số thông tin ở đó nhưng không nhất thiết là tất cả
+
+518
+00:40:05.310 --> 00:40:15.290
+thông tin vâng Tôi không chắc đó là điều khác tôi cần tìm kiếm Tôi đoán
+
+519
+00:40:16.130 --> 00:40:19.580
+bất kỳ câu hỏi nào khác
+
+520
+00:40:21.290 --> 00:40:30.470
+được rồi, mặc dù đó là trên các tiện ích CMS và LOC đã được giới thiệu để cố gắng giải quyết
+
+521
+00:40:30.470 --> 00:40:33.440
+biến mất vấn đề độ dốc vì vậy câu hỏi là Oh
+
+522
+00:40:33.440 --> 00:40:37.510
+Chính xác thì kiến ​​trúc này làm cho vấn đề banchon gradient trở nên tốt hơn như thế nào
+
+523
+00:40:37.510 --> 00:40:42.530
+vì vậy bạn có thể thấy rằng kiến ​​trúc LS TM thực sự làm cho nó dễ dàng hơn
+
+524
+00:40:42.530 --> 00:40:45.620
+cho RN kết thúc để lưu giữ thông tin qua nhiều cuống thời gian
+
+525
+00:40:45.620 --> 00:40:50.030
+Vì vậy, trong khi RNN ở giữa rất khó để bảo tồn
+
+526
+00:40:50.030 --> 00:40:53.390
+thông tin trên tất cả các trạng thái ẩn thực sự khá dễ dàng
+
+527
+00:40:53.390 --> 00:40:57.590
+chiến lược giúp LSC m đơn giản để lưu giữ thông tin
+
+528
+00:40:57.590 --> 00:41:02.450
+cụ thể là nếu cổng quên được đặt để ghi nhớ mọi thứ trên mỗi bước
+
+529
+00:41:02.450 --> 00:41:06.500
+một chiến lược khá đơn giản sẽ đảm bảo rằng thông tin trong tế bào
+
+530
+00:41:06.500 --> 00:41:10.520
+sẽ được bảo tồn vô thời hạn qua nhiều bước thời gian vì vậy tôi không biết nếu
+
+531
+00:41:10.520 --> 00:41:13.490
+đó thực sự là một chiến lược tốt cho bất kỳ nhiệm vụ nào bạn đang cố gắng thực hiện trừ tôi
+
+532
+00:41:13.490 --> 00:41:18.200
+điểm là có ít nhất một cách khá đơn giản để LS TM
+
+533
+00:41:18.200 --> 00:41:23.720
+giữ thông tin qua nhiều bước và như chúng tôi đã lưu ý rằng điều đó tương đối khó hơn đối với
+
+534
+00:41:23.720 --> 00:41:27.980
+vanilla hoặc một thực thể để bạn có thể coi đây là lý do chính tại sao LS
+
+535
+00:41:27.980 --> 00:41:33.410
+TMS có nhiều khả năng lưu giữ thông tin hơn và do đó có nhiều hơn về
+
+536
+00:41:33.410 --> 00:41:38.360
+vấn đề độ dốc biến mất tuy nhiên tôi nghĩ bạn vẫn nên biết rằng LS TMS
+
+537
+00:41:38.360 --> 00:41:41.300
+không nhất thiết đảm bảo rằng chúng ta không có sự biến mất hoặc bùng nổ
+
+538
+00:41:41.300 --> 00:41:44.360
+vấn đề độ dốc bạn vẫn có thể có vấn đề đó nhưng điều cần nhớ
+
+539
+00:41:44.360 --> 00:41:52.760
+là nó dễ dàng hơn để tránh nó theo cách ổn chứ nên LS TMS đã được chứng minh là
+
+540
+00:41:52.760 --> 00:41:55.670
+mạnh mẽ hơn cho vấn đề hạt biến mất nhưng tôi sẽ nói với bạn một
+
+541
+00:41:55.670 --> 00:41:59.150
+một chút về cách họ thực sự thành công hơn trong cuộc sống thực mà không cần
+
+542
+00:41:59.150 --> 00:42:01.270
+câu hỏi
+
+543
+00:42:24.260 --> 00:42:28.380
+được rồi, đó là một câu hỏi tuyệt vời câu hỏi là tại sao nó chỉ vì
+
+544
+00:42:28.380 --> 00:42:32.460
+bạn có các LS TM này để tìm các phương trình chuyển tiếp tại sao bạn không có trang trại
+
+545
+00:42:32.460 --> 00:42:37.470
+vấn đề thành phần tại sao logic về loại quy tắc chuỗi
+
+546
+00:42:37.470 --> 00:42:40.890
+trở nên nhỏ hơn và nhỏ hơn hoặc lớn hơn và lớn hơn không áp dụng vì vậy tôi nghĩ rằng chìa khóa
+
+547
+00:42:40.890 --> 00:42:47.070
+ở đây là trong vanilla RNN, các trạng thái ẩn giống như một
+
+548
+00:42:47.070 --> 00:42:51.690
+nút cổ chai phải giống như tất cả các gradient phải đi qua chúng vì vậy nếu gradient đó là
+
+549
+00:42:51.690 --> 00:42:55.830
+nhỏ hơn tất cả các hạt hạ lưu sẽ nhỏ trong khi ở đây bạn có thể quan tâm
+
+550
+00:42:55.830 --> 00:43:01.080
+tế bào giống như một kết nối phím tắt ít nhất là trong trường hợp
+
+551
+00:43:01.080 --> 00:43:05.940
+nơi cổng quên được thiết lập để ghi nhớ mọi thứ thì đó giống như một
+
+552
+00:43:05.940 --> 00:43:09.690
+kết nối phím tắt trong đó ô sẽ giữ nguyên nếu bạn quên
+
+553
+00:43:09.690 --> 00:43:15.000
+cổng được thiết lập để ghi nhớ mọi thứ vì vậy nếu ô này vẫn giữ nguyên như vậy thì bạn
+
+554
+00:43:15.000 --> 00:43:20.910
+sẽ không có độ dốc biến mất của ô để điều đó có nghĩa là
+
+555
+00:43:20.910 --> 00:43:24.720
+để có được kết nối từ độ dốc của một cái gì đó trong tương lai đối với
+
+556
+00:43:24.720 --> 00:43:27.930
+một cái gì đó trong quá khứ có một tuyến đường tiềm năng cho gradient đi
+
+557
+00:43:27.930 --> 00:43:51.120
+thông qua tế bào không nhất thiết phải biến mất nên tôi nghĩ câu hỏi là làm thế nào
+
+558
+00:43:51.120 --> 00:43:54.210
+Bạn có kiểm tra xem độ dốc của bạn có đúng không khi có
+
+559
+00:43:54.210 --> 00:44:00.060
+nhiều tuyến đường để thông tin đi du lịch nên tôi cho rằng điều này phần nào
+
+560
+00:44:00.060 --> 00:44:03.720
+liên quan đến những gì chúng ta đã nói về lần trước với quy tắc chuỗi đa biến
+
+561
+00:44:03.720 --> 00:44:07.620
+về đạo hàm của sự mất mát đối với và trọng lượng lặp lại
+
+562
+00:44:07.620 --> 00:44:11.250
+ma trận và chúng tôi thấy rằng nếu có nhiều tuyến thì đa biến
+
+563
+00:44:11.250 --> 00:44:14.730
+quy tắc chuỗi nói rằng bạn thêm độ dốc vì vậy nếu câu hỏi của bạn là làm thế nào
+
+564
+00:44:14.730 --> 00:44:18.750
+bạn thực hiện các phép tính chính xác Tôi đoán bạn chỉ cần áp dụng đa biến
+
+565
+00:44:18.750 --> 00:44:21.900
+quy tắc chuỗi và người châu Á bình tĩnh hơn khi đánh giá với LS TMS nếu
+
+566
+00:44:21.900 --> 00:44:24.960
+sử dụng đèn pin PI 214 bạn phải tự làm điều đó nếu bạn sẽ thực hiện nó
+
+567
+00:44:24.960 --> 00:44:30.349
+bản thân bạn sau đó bạn có thể có một thời gian khó khăn hơn yeah vì vậy tôi đoán nó yeah
+
+568
+00:44:30.349 --> 00:44:39.329
+được rồi, vậy chúng ta sẽ ổn ở đâu để chúng ta nói về Ella
+
+569
+00:44:39.329 --> 00:44:44.700
+bắt nguồn và cách họ làm việc trong thế giới thực, vì vậy trong quá khứ gần đây
+
+570
+00:44:44.700 --> 00:44:49.829
+2013 2015 LS TM bắt đầu đạt được nhiều kết quả hiện đại trên nhiều loại
+
+571
+00:44:49.829 --> 00:44:53.760
+của các nhiệm vụ khác nhau bao gồm cả ví dụ như lời nói nhận dạng chữ viết
+
+572
+00:44:53.760 --> 00:44:59.369
+dịch máy nhận dạng tạm dừng chú thích hình ảnh trong giai đoạn này
+
+573
+00:44:59.369 --> 00:45:03.750
+Alice TMS trở thành phương pháp tiếp cận chủ đạo trong rất nhiều lĩnh vực ứng dụng này
+
+574
+00:45:03.750 --> 00:45:07.880
+bởi vì họ làm việc thuyết phục tốt hơn rất nhiều so với vanilla tên của chúng tôi
+
+575
+00:45:07.880 --> 00:45:14.760
+tuy nhiên ngày nay năm 2019 mọi thứ thay đổi khá nhanh trong việc học sâu nên khác
+
+576
+00:45:14.760 --> 00:45:17.910
+phương pháp tiếp cận ví dụ máy biến áp sẽ tìm hiểu về sau
+
+577
+00:45:17.910 --> 00:45:21.750
+lớp học trong một số lĩnh vực ứng dụng này dường như đã trở thành
+
+578
+00:45:21.750 --> 00:45:27.450
+Cách tiếp cận chi phối vì vậy để xem xét điều này tôi đã xem WMT là một cỗ máy
+
+579
+00:45:27.450 --> 00:45:32.280
+hội nghị dịch thuật và cũng là cuộc thi nơi mọi người nộp MT của họ
+
+580
+00:45:32.280 --> 00:45:38.869
+các hệ thống được đánh giá và tôi đã xem xét các báo cáo báo cáo tóm tắt từ WMTW
+
+581
+00:45:46.130 --> 00:45:50.490
+hệ thống MT của họ dựa trên kết thúc RN và đặc biệt là Alice tiems
+
+582
+00:45:50.490 --> 00:45:54.270
+và sau đó tôi xem báo cáo từ năm 2018 chỉ hai năm sau và tôi thấy rằng
+
+583
+00:45:54.270 --> 00:45:58.380
+RN n từ RN n chỉ xuất hiện chín lần và biến áp từ
+
+584
+00:45:58.380 --> 00:46:02.520
+xuất hiện 63 lần và trên thực tế ban tổ chức lưu ý rằng tất cả mọi người
+
+585
+00:46:02.520 --> 00:46:06.720
+Bây giờ mọi người dường như đang sử dụng máy biến thế nên có nhiều thứ thay đổi
+
+586
+00:46:06.720 --> 00:46:12.150
+học nhanh về điều sâu sắc và mới mẻ chỉ vài năm trước đây là bây giờ
+
+587
+00:46:12.150 --> 00:46:16.470
+có thể được thông qua bởi các cách tiếp cận khác vì vậy bạn sẽ học
+
+588
+00:46:16.470 --> 00:46:19.890
+thêm về máy biến thế sau nhưng tôi đoán điều đó cho bạn một loại ý tưởng về
+
+589
+00:46:19.890 --> 00:46:26.609
+Alice TMS hiện đang ở trong các ứng dụng ổn, vì vậy loại thứ hai
+
+590
+00:46:26.609 --> 00:46:29.400
+rnm trước đã học về là đơn vị định kỳ gated
+
+591
+00:46:29.400 --> 00:46:33.960
+vì vậy những điều này may mắn là đơn giản hơn TMS trên thực tế
+
+592
+00:46:33.960 --> 00:46:40.020
+động lực để họ được đăng bài vào năm 2014 như một cách để cố gắng giữ lại
+
+593
+00:46:40.020 --> 00:46:45.840
+điểm mạnh của LS DMS nhưng loại bỏ mọi phức tạp không cần thiết vì vậy
+
+594
+00:46:45.840 --> 00:46:50.090
+năng lượng là bạn, chúng ta không có trạng thái tế bào, chúng ta lại có trạng thái ẩn
+
+595
+00:46:50.090 --> 00:46:54.030
+nhưng điểm chung của nó với các khán đài khác là chúng ta sẽ trở thành
+
+596
+00:46:54.030 --> 00:46:58.500
+sử dụng cổng để kiểm soát luồng thông tin nên đây là các phương trình
+
+597
+00:46:58.500 --> 00:47:05.550
+Đối với GRU, chúng tôi bắt đầu với hai cổng để cổng đầu tiên được gọi là cổng cập nhật
+
+598
+00:47:05.550 --> 00:47:09.510
+và điều này kiểm soát những phần nào của các trạng thái ẩn sẽ được cập nhật
+
+599
+00:47:09.510 --> 00:47:15.060
+so với bảo tồn để bạn có thể xem đây là vai trò của cả hai
+
+600
+00:47:15.060 --> 00:47:21.870
+quên cổng và cổng đầu vào trong lsdm và đó là các máy tính giống nhau
+
+601
+00:47:21.870 --> 00:47:26.520
+cách như các cổng trong lsdm wha cổng thứ hai được gọi là thiết lập lại
+
+602
+00:47:26.520 --> 00:47:30.660
+cổng RT và ý tưởng là cổng này đang kiểm soát phần nào của
+
+603
+00:47:30.660 --> 00:47:35.400
+trạng thái ẩn trước đó sẽ được sử dụng để tính toán nội dung mới để bạn có thể
+
+604
+00:47:35.400 --> 00:47:38.880
+nghĩ về cổng đặt lại là loại chọn phần nào của phần trước
+
+605
+00:47:38.880 --> 00:47:42.360
+trạng thái ẩn là hữu ích so với không hữu ích vì vậy nó sẽ loại bỏ một số
+
+606
+00:47:42.360 --> 00:47:48.780
+mọi thứ và chọn một số thứ khác ổn, vì vậy đây là cách các cổng đó được sử dụng h
+
+607
+00:47:48.780 --> 00:47:53.360
+Đây là nội dung bạn có thể nghĩ về nó như là nội dung ẩn mới và
+
+608
+00:47:53.360 --> 00:47:57.870
+Điều gì đang xảy ra trong phương trình đó là chúng ta đang áp dụng cổng đặt lại cho
+
+609
+00:47:57.870 --> 00:48:02.850
+trạng thái ẩn trước đó trừ đi 1 và sau đó đưa tất cả điều đó qua một số
+
+610
+00:48:02.850 --> 00:48:07.530
+biến đổi tuyến tính và tại một H và sau đó điều này cung cấp cho chúng ta nội dung mới
+
+611
+00:48:07.530 --> 00:48:14.340
+chúng tôi muốn viết cho bản thân ẩn và cuối cùng, ô ẩn mới của chúng tôi sẽ hoạt động
+
+612
+00:48:14.340 --> 00:48:20.460
+là sự kết hợp của nội dung mới này và các Quốc gia ẩn trước đó để
+
+613
+00:48:20.460 --> 00:48:25.280
+Điều quan trọng cần lưu ý ở đây là chúng ta có một điểm trừ U và Utah vì vậy
+
+614
+00:48:25.280 --> 00:48:30.620
+Nó giống như một sự cân bằng phải không U đang thiết lập sự cân bằng giữa
+
+615
+00:48:30.620 --> 00:48:35.370
+bảo quản mọi thứ từ trạng thái ẩn trước đó so với viết nội dung mới
+
+616
+00:48:35.370 --> 00:48:38.220
+trong khi đó trong LS TM đó là hai cổng hoàn toàn riêng biệt có thể
+
+617
+00:48:38.220 --> 00:48:42.180
+bất cứ giá trị nào ở đây chúng tôi đều có ràng buộc này rằng bạn là một sự cân bằng
+
+618
+00:48:42.180 --> 00:48:46.020
+Vì vậy, nếu bạn có nhiều hơn một thì bạn phải có ít hơn những thứ khác vì vậy đây là một
+
+619
+00:48:46.020 --> 00:48:51.130
+cách mà những người tạo ra G bạn đã tìm cách làm cho LS CMS đơn giản hơn
+
+620
+00:48:51.130 --> 00:48:57.100
+là bằng cách có một cổng duy nhất đóng cả hai vai trò này, vì vậy đó là GI sử dụng và tôi
+
+621
+00:48:57.100 --> 00:48:59.380
+nghĩ rằng nó ít rõ ràng hơn chỉ nhìn vào nó
+
+622
+00:48:59.380 --> 00:49:03.730
+Tại sao GI sử dụng giúp giải quyết vấn đề lớn nhất vì không có gì rõ ràng
+
+623
+00:49:03.730 --> 00:49:09.880
+bộ nhớ như thể không có cuống nên tôi nghĩ cách nhìn ở đây là G
+
+624
+00:49:09.880 --> 00:49:12.790
+OU bạn có thể xem điều này cũng là một giải pháp cho gradient biến mất
+
+625
+00:49:12.790 --> 00:49:18.120
+vấn đề vì giống như G OU của Alice GM giúp việc lưu giữ thông tin dễ dàng hơn
+
+626
+00:49:18.120 --> 00:49:25.510
+lâu dài, ví dụ ở đây nếu cổng cập nhật UT được đặt thành 0 thì
+
+627
+00:49:25.510 --> 00:49:30.700
+chúng ta sẽ giữ trạng thái ẩn giống nhau trên mỗi bước và một lần nữa
+
+628
+00:49:30.700 --> 00:49:33.460
+đó có thể không phải là một ý tưởng tốt nhưng ít nhất đó là một chiến lược bạn có thể dễ dàng
+
+629
+00:49:33.460 --> 00:49:38.440
+làm để giữ thông tin trên một khoảng cách xa, vì vậy đó là loại như
+
+630
+00:49:38.440 --> 00:49:41.980
+cùng một lời giải thích về cách tôi sử dụng làm cho RN dễ dàng hơn
+
+631
+00:49:41.980 --> 00:49:49.720
+giữ thông tin lâu dài được rồi nên chúng tôi đã tìm hiểu về hai
+
+632
+00:49:49.720 --> 00:50:09.070
+Tôi nghĩ rằng việc tạo ra hai cổng khác nhau của bạn
+
+633
+00:50:09.070 --> 00:50:16.180
+câu hỏi là chúng tôi đã xem hai cổng này trong GRU là một sự tương tự chính xác với
+
+634
+00:50:16.180 --> 00:50:21.460
+các cổng trong STM hoặc chúng giống nhau hơn, tôi có thể nói nhiều hơn về
+
+635
+00:50:21.460 --> 00:50:26.170
+một sự tương tự mờ vì có những thay đổi khác đang diễn ra ở đây như đối với
+
+636
+00:50:26.170 --> 00:50:29.860
+ví dụ thực tế là không có ô nhớ riêng biệt có nghĩa là chúng
+
+637
+00:50:29.860 --> 00:50:34.770
+không thực hiện chính xác các chức năng tương tự yeah
+
+638
+00:50:36.390 --> 00:50:40.740
+được rồi vì vậy chúng tôi đã tìm hiểu về việc sử dụng LST M và Gi, cả hai đều phức tạp hơn
+
+639
+00:50:40.740 --> 00:50:46.890
+các dạng RN kết thúc phức tạp hơn các van RN kết thúc và cả hai đều nhiều hơn
+
+640
+00:50:46.890 --> 00:50:52.289
+mạnh mẽ cho vấn đề độ dốc biến mất, vì vậy thật hữu ích khi biết cái nào trong số này
+
+641
+00:50:52.289 --> 00:50:57.690
+nên sử dụng trong thực tế cái nào thành công hơn LST M hoặc GRU vì vậy tôi
+
+642
+00:50:57.690 --> 00:51:00.869
+đã đọc một chút và có vẻ như các nhà nghiên cứu đã đề xuất rất nhiều
+
+643
+00:51:00.869 --> 00:51:04.980
+các loại RN có kiểm soát khác nhau kết thúc để không chỉ GI sử dụng CMS như nhiều loại khác
+
+644
+00:51:04.980 --> 00:51:09.390
+giấy tờ với rất nhiều biến thể khác nhau nhưng đây chắc chắn là
+
+645
+00:51:09.390 --> 00:51:13.859
+hai cái được sử dụng rộng rãi nhất và có lẽ bạn có thể nói rằng cái lớn nhất
+
+646
+00:51:13.859 --> 00:51:17.789
+sự khác biệt giữa hai điều chắc chắn là việc sử dụng GI đơn giản hơn và
+
+647
+00:51:17.789 --> 00:51:22.079
+tính toán nhanh hơn và chúng có ít tham số hơn nên điều này làm cho thực tế
+
+648
+00:51:22.079 --> 00:51:25.829
+sự khác biệt thực tế đối với bạn như một người thực hành học tập sâu bởi vì nếu bạn
+
+649
+00:51:25.829 --> 00:51:29.760
+xây dựng mạng của bạn dựa trên G hoặc sử dụng sau đó sẽ nhanh hơn để chạy về phía trước
+
+650
+00:51:29.760 --> 00:51:34.410
+và bạn biết đi tàu nhanh hơn và cứ thế khác hơn là có vẻ như
+
+651
+00:51:34.410 --> 00:51:39.329
+không có bằng chứng thuyết phục nào cho thấy một trong những Modi mà tôi sử dụng là
+
+652
+00:51:39.329 --> 00:51:43.319
+luôn vượt trội so với người khác trong nhiều nhiệm vụ khác nhau
+
+653
+00:51:43.319 --> 00:51:48.630
+Dường như đôi khi GI sử dụng để bạn thực hiện tốt như lcms nhưng ở đó
+
+654
+00:51:48.630 --> 00:51:53.190
+là những trường hợp mà một trong số họ thực hiện tốt nhất so với cái khác theo quy tắc
+
+655
+00:51:53.190 --> 00:51:57.690
+ngón tay cái có vẻ như STM thường là một lựa chọn mặc định tốt để bắt đầu với đặc biệt là
+
+656
+00:51:57.690 --> 00:52:00.930
+nếu dữ liệu của bạn có sự phụ thuộc đặc biệt dài vì có bằng chứng để
+
+657
+00:52:00.930 --> 00:52:03.720
+nghĩ rằng các sinh viên khác có thể tốt hơn một chút trong việc giữ thông tin
+
+658
+00:52:03.720 --> 00:52:07.829
+trên một khoảng cách rất dài và nếu bạn có nhiều dữ liệu đào tạo, bạn có thể
+
+659
+00:52:07.829 --> 00:52:11.339
+nghĩ rằng l STM là một lựa chọn tốt hơn bởi vì chúng có nhiều tham số hơn
+
+660
+00:52:11.339 --> 00:52:19.920
+có nghĩa là có thể bạn cần thêm dữ liệu đào tạo để tìm hiểu chúng vì vậy quy tắc chung là
+
+661
+00:52:19.920 --> 00:52:22.980
+rằng có lẽ bạn muốn bắt đầu với những TMS đó và nếu bạn hài lòng với chúng tôi
+
+662
+00:52:22.980 --> 00:52:25.470
+hiệu suất và hài lòng với thời gian đào tạo sau đó bạn gắn bó với điều đó
+
+663
+00:52:25.470 --> 00:52:28.200
+Nhưng nếu bạn cảm thấy cần nó hiệu quả hơn thì có lẽ bạn nên
+
+664
+00:52:28.200 --> 00:52:33.589
+chuyển sang sử dụng GI và xem điều đó diễn ra như thế nào với hiệu suất và nếu nó nhanh hơn
+
+665
+00:52:33.589 --> 00:52:38.490
+được rồi vì vậy chúng ta đã nói rất nhiều về việc độ dốc nổ biến mất là như thế nào
+
+666
+00:52:38.490 --> 00:52:43.230
+vấn đề xảy ra rất nhiều trong mục đích của chúng tôi nhưng câu hỏi đặt ra là nó chỉ là một RNN
+
+667
+00:52:43.230 --> 00:52:46.980
+vấn đề này xảy ra và các loại mạng nơ ron khác cũng như
+
+668
+00:52:46.980 --> 00:52:52.020
+Câu trả lời là không, không chỉ riêng chúng ta trong thực tế cuối cùng đã nổ tung các thành phần
+
+669
+00:52:52.020 --> 00:52:57.240
+là một vấn đề khá quan trọng đối với hầu hết kiến ​​trúc thần kinh như thức ăn
+
+670
+00:52:57.240 --> 00:53:00.540
+về phía trước và chập chững đặc biệt là khi chúng sâu và đây thực sự là một
+
+671
+00:53:00.540 --> 00:53:03.960
+vấn đề nghiêm trọng bởi vì không có điểm nào có kiến ​​trúc thần kinh thực sự tuyệt vời
+
+672
+00:53:03.960 --> 00:53:07.350
+nếu bạn không thể học nó một cách hiệu quả vì độ dốc biến mất
+
+673
+00:53:07.350 --> 00:53:12.270
+vấn đề đặc biệt là trong các mạng chuyển tiếp này
+
+674
+00:53:12.270 --> 00:53:16.850
+bạn thường có một độ dốc trở nên nhỏ hơn so với lan truyền trở lại
+
+675
+00:53:16.850 --> 00:53:20.490
+bởi vì quy tắc chuỗi vì điều này nhân với tất cả những khác nhau
+
+676
+00:53:20.490 --> 00:53:24.750
+độ dốc trung gian hoặc đôi khi do bạn chọn hàm phi tuyến tính
+
+677
+00:53:24.750 --> 00:53:29.070
+Vì vậy, nếu điều này xảy ra, điều này có nghĩa là bạn là lớp dưới của bạn
+
+678
+00:53:29.070 --> 00:53:33.140
+cho biết mạng chập hoặc mạng chuyển tiếp thức ăn có mạng nhỏ hơn nhiều
+
+679
+00:53:33.140 --> 00:53:38.550
+độ dốc hơn mức cao và điều này có nghĩa là chúng bị thay đổi rất chậm
+
+680
+00:53:38.550 --> 00:53:42.630
+trong SGG vì vậy điều này có nghĩa là tổng thể mạng của bạn rất chậm để đào tạo
+
+681
+00:53:42.630 --> 00:53:48.150
+bởi vì khi bạn cập nhật thì các lớp dưới của bạn thay đổi rất chậm
+
+682
+00:53:48.150 --> 00:53:51.300
+một giải pháp giống như một nhóm giải pháp mà chúng ta đã thấy gần đây
+
+683
+00:53:51.300 --> 00:53:56.640
+năm đó đã có rất nhiều đề xuất cho các loại thức ăn sâu mới
+
+684
+00:53:56.640 --> 00:54:00.990
+kiến trúc chuyển tiếp hoặc tích chập và những gì họ làm là họ thêm trực tiếp
+
+685
+00:54:00.990 --> 00:54:05.670
+các kết nối trong mạng và loại ý tưởng như chúng ta đã nói trước đây là
+
+686
+00:54:05.670 --> 00:54:08.850
+rằng nếu bạn thêm tất cả các kết nối trực tiếp giữa các lớp như có thể
+
+687
+00:54:08.850 --> 00:54:13.140
+Không chỉ các lớp liền kề mà các lớp phần tiếp theo sau đó nó làm cho nó dễ dàng hơn nhiều
+
+688
+00:54:13.140 --> 00:54:16.230
+để chuyển màu và bạn sẽ thấy việc đào tạo của mình dễ dàng hơn
+
+689
+00:54:16.230 --> 00:54:19.860
+mạng tổng thể vì vậy tôi sẽ chỉ cho bạn một số ví dụ về những điều này nói riêng
+
+690
+00:54:19.860 --> 00:54:22.920
+bởi vì rất có khả năng bạn sẽ gặp phải những kiểu kiến ​​trúc này
+
+691
+00:54:22.920 --> 00:54:27.300
+khi bạn đang thực hiện các dự án của mình và đọc các bài báo thì một ví dụ là
+
+692
+00:54:27.300 --> 00:54:30.840
+một cái gì đó gọi là kết nối còn lại hoặc chính mạng hoặc đôi khi được gọi
+
+693
+00:54:30.840 --> 00:54:36.840
+đến với độ phân giải Nets và ở đây chúng tôi đã có một số liệu từ bài báo liên quan của họ
+
+694
+00:54:36.840 --> 00:54:42.030
+những gì đang diễn ra trong sơ đồ này là bạn có loại thông thường bạn có
+
+695
+00:54:42.030 --> 00:54:45.720
+lớp trọng lượng và một phi tuyến tính hiếm khi bạn và một lớp cân khác
+
+696
+00:54:45.720 --> 00:54:50.010
+nếu bạn coi chức năng đó là f của X thì họ đang làm gì thay vì
+
+697
+00:54:50.010 --> 00:54:55.860
+chỉ cần chuyển đổi X thành f của X, họ sẽ lấy f của X cộng với X để họ thêm
+
+698
+00:54:55.860 --> 00:55:00.810
+danh tính này bỏ qua kết nối trong đó đầu vào X được bỏ qua hai lớp đó
+
+699
+00:55:00.810 --> 00:55:05.970
+và sau đó thêm vào đầu ra của hai lớp để
+
+700
+00:55:05.970 --> 00:55:10.680
+Lý do tại sao đây là một ý tưởng tốt còn được gọi là bỏ qua các kết nối là
+
+701
+00:55:10.680 --> 00:55:15.540
+kết nối nhận dạng sẽ bảo toàn thông tin theo mặc định
+
+702
+00:55:15.540 --> 00:55:20.520
+nếu bạn tưởng tượng có lẽ nếu bạn khởi tạo mạng của mình và bạn khởi tạo mạng của mình
+
+703
+00:55:20.520 --> 00:55:23.850
+chờ các lớp để có các giá trị ngẫu nhiên nhỏ sau đó nếu chúng nhỏ và tốt
+
+704
+00:55:23.850 --> 00:55:27.900
+gần bằng 0 thì bạn sẽ có một cái gì đó giống như một bản sắc ồn ào
+
+705
+00:55:27.900 --> 00:55:30.570
+đúng chức năng để bạn sẽ được lưu giữ thông tin theo mặc định
+
+706
+00:55:30.570 --> 00:55:33.990
+thông qua tất cả các lớp của bạn và nếu bạn có một mạng lưới rất sâu có nghĩa là
+
+707
+00:55:33.990 --> 00:55:37.740
+thậm chí sau nhiều lớp bạn vẫn sẽ có thứ gì đó giống như của bạn
+
+708
+00:55:37.740 --> 00:55:44.910
+đầu vào ban đầu để những người viết bài báo này cho thấy rằng nếu bạn không
+
+709
+00:55:44.910 --> 00:55:48.420
+có cái gì đó như bỏ qua các kết nối thì thực sự bạn có thể tìm thấy nó sâu
+
+710
+00:55:48.420 --> 00:55:53.520
+lớp sâu mạng thực hiện kém hơn trên một số nhiệm vụ so với mạng nông không
+
+711
+00:55:53.520 --> 00:55:56.280
+bởi vì chúng không đủ biểu cảm nhưng vì chúng quá khó để
+
+712
+00:55:56.280 --> 00:55:59.130
+học như vậy khi bạn cố gắng học các mạng sâu, nó không học
+
+713
+00:55:59.130 --> 00:56:02.160
+hiệu quả và bạn cuối cùng nhận được hiệu suất tồi tệ nhất trong mạng nông
+
+714
+00:56:02.160 --> 00:56:04.260
+những người đọc bài báo này cho thấy rằng khi họ thêm những lần bỏ qua này
+
+715
+00:56:04.260 --> 00:56:08.310
+kết nối sau đó họ làm cho các mạng sâu hiệu quả hơn nhiều và họ
+
+716
+00:56:08.310 --> 00:56:14.940
+quản lý để có được hiệu suất tốt vì vậy một ví dụ khác loại này lấy
+
+717
+00:56:14.940 --> 00:56:18.930
+ý tưởng xa hơn là một cái gì đó gọi là kết nối dày đặc hoặc Nats dày đặc và một lần nữa điều này
+
+718
+00:56:18.930 --> 00:56:23.850
+là một cái gì đó được đề xuất tôi nghĩ trong một thiết lập chuyển tiếp hoặc tích chập và
+
+719
+00:56:23.850 --> 00:56:27.240
+nó chỉ là loại bit kết nối bỏ qua tương tự ngoại trừ kết nối
+
+720
+00:56:27.240 --> 00:56:30.480
+tất cả mọi thứ cho tất cả mọi thứ vì vậy thêm nhiều hơn các loại kết nối bỏ qua từ tất cả
+
+721
+00:56:30.480 --> 00:56:35.790
+các lớp cho tất cả các lớp và chúng cho thấy rằng điều này thực hiện tốt hơn và cuối cùng
+
+722
+00:56:35.790 --> 00:56:39.090
+một cái tôi muốn nói về cái mà tôi có một bức tranh là cái gì đó gọi là đường cao tốc
+
+723
+00:56:39.090 --> 00:56:44.310
+các kết nối này tương tự như các kết nối còn lại hoặc bỏ qua nhưng
+
+724
+00:56:44.310 --> 00:56:48.840
+ý tưởng là thay vì chỉ thêm X của bạn thêm kết nối danh tính của bạn
+
+725
+00:56:48.840 --> 00:56:52.470
+ý tưởng là bạn sẽ có một cổng kiểm soát sự cân bằng giữa việc thêm
+
+726
+00:56:52.470 --> 00:56:57.420
+nhận dạng và tính toán chuyển đổi vì vậy thay vì FX cộng với X
+
+727
+00:56:57.420 --> 00:57:00.930
+bạn sẽ có bạn biết cổng x FX cộng với bạn biết 1 trừ K lần X
+
+728
+00:57:00.930 --> 00:57:05.970
+đại loại như vậy nên tác phẩm này thực sự được lấy cảm hứng từ LS TMS nhưng thay vào đó
+
+729
+00:57:05.970 --> 00:57:09.330
+về việc áp dụng nó cho một thiết lập định kỳ mà họ đang tìm cách áp dụng nó cho một
+
+730
+00:57:09.330 --> 00:57:12.530
+cài đặt chuyển tiếp
+
+731
+00:57:14.290 --> 00:57:20.140
+được rồi tôi sẽ tiếp tục ngay bây giờ vì vậy tổng thể câu hỏi là bạn biết làm thế nào
+
+732
+00:57:20.140 --> 00:57:23.050
+nhiều chuyên gia biến mất thành phần một vấn đề bên ngoài các thiết lập của chúng tôi
+
+733
+00:57:23.050 --> 00:57:27.250
+tay và tôi nghĩ rằng điều quan trọng là nó là một vấn đề lớn, nhưng bạn
+
+734
+00:57:27.250 --> 00:57:30.250
+cần lưu ý rằng nó đặc biệt là một vấn đề cho bàn tay của chúng ta
+
+735
+00:57:30.250 --> 00:57:34.960
+Vì vậy, Ireland đặc biệt không ổn định và điều này về cơ bản là do
+
+736
+00:57:34.960 --> 00:57:38.260
+nhân lặp lại với ma trận trọng số tương tự nếu bạn nhớ từ cuối
+
+737
+00:57:38.260 --> 00:57:41.950
+thời gian điều đặc trưng về n kết thúc của chúng ta làm cho chúng tái phát là
+
+738
+00:57:41.950 --> 00:57:45.100
+thực tế là bạn đang áp dụng cùng một ma trận trọng lượng nhiều lần
+
+739
+00:57:45.100 --> 00:57:48.670
+đây thực sự là lý do cốt lõi tại sao họ rất dễ bị biến mất
+
+740
+00:57:48.670 --> 00:57:52.240
+số mũ theo độ dốc và bạn có thể xem thêm một số thông tin về điều đó trong
+
+741
+00:57:52.240 --> 00:57:58.140
+giấy ổn, vì vậy tôi biết ngày nay có rất nhiều thông tin dày đặc
+
+742
+00:57:58.140 --> 00:58:02.110
+ký hiệu lớn vì vậy đây là một bản tóm tắt nếu tôi mất bạn bất cứ lúc nào bây giờ là thời điểm tốt
+
+743
+00:58:02.110 --> 00:58:04.900
+nhảy trở lại bởi vì nó sẽ dễ hiểu hơn một chút
+
+744
+00:58:04.900 --> 00:58:09.100
+có lẽ vì vậy ok tóm tắt những gì chúng ta đã học về ngày hôm nay chất kích thích đầu tiên về
+
+745
+00:58:09.100 --> 00:58:12.760
+là vấn đề độ dốc biến mất chúng ta tìm hiểu những gì chúng ta tìm hiểu tại sao xảy ra
+
+746
+00:58:12.760 --> 00:58:18.850
+và chúng tôi đã thấy lý do tại sao nó không tốt cho mục đích của chính chúng tôi, ví dụ như các mô hình ngôn ngữ RNN và chúng tôi
+
+747
+00:58:18.850 --> 00:58:22.690
+cũng đã học về cách sử dụng LST M và Gi phức tạp hơn n của chúng tôi
+
+748
+00:58:22.690 --> 00:58:26.770
+và họ sử dụng cổng để kiểm soát luồng thông tin và bằng cách đó
+
+749
+00:58:26.770 --> 00:58:30.910
+nhiều hơn là một vấn đề biến mất gradient ổn, vì vậy nếu phần còn lại
+
+750
+00:58:30.910 --> 00:58:33.820
+lựa chọn oh bạn nghĩ rằng chúng ta còn khoảng 20 phút nữa chúng ta sẽ trở thành
+
+751
+00:58:33.820 --> 00:58:37.150
+tìm hiểu về hai loại tay cao cấp hơn của chúng ta, vì vậy loại thứ nhất là
+
+752
+00:58:37.150 --> 00:58:41.860
+hai chiều là n kết thúc và đó là tất cả về thông tin chảy từ trái sang phải
+
+753
+00:58:41.860 --> 00:58:46.240
+và từ phải sang trái và sau đó chúng ta cũng sẽ tìm hiểu về kết thúc RN nhiều lớp
+
+754
+00:58:46.240 --> 00:58:50.770
+đó là khi bạn áp dụng nhiều được công bố chồng lên nhau vì vậy tôi
+
+755
+00:58:50.770 --> 00:58:55.720
+nói rằng cả hai đều khá đơn giản về mặt khái niệm vì vậy không nên quá
+
+756
+00:58:55.720 --> 00:59:01.690
+khó hiểu được, vì vậy hãy bắt đầu với RN hai chiều kết thúc điều này
+
+757
+00:59:01.690 --> 00:59:04.960
+là một hình ảnh mà bạn đã thấy ở cuối bài giảng cuối cùng vì vậy nếu bạn nhớ
+
+758
+00:59:04.960 --> 00:59:08.410
+phân loại tình cảm là nhiệm vụ khi bạn có một số loại đầu vào
+
+759
+00:59:08.410 --> 00:59:12.760
+câu như bộ phim rất thú vị và bạn muốn phân loại nó
+
+760
+00:59:12.760 --> 00:59:17.350
+như tình cảm tích cực hoặc tiêu cực vì vậy trong ví dụ này nó nên được xem là
+
+761
+00:59:17.350 --> 00:59:24.520
+tình cảm tích cực vì vậy đây là một ví dụ về cách bạn có thể cố gắng giải quyết tình cảm
+
+762
+00:59:24.520 --> 00:59:27.390
+phân loại bằng mô hình RNN khá đơn giản
+
+763
+00:59:27.390 --> 00:59:31.109
+Ở đây chúng tôi đang sử dụng RNN như một loại bộ mã hóa câu và ẩn
+
+764
+00:59:31.109 --> 00:59:34.380
+trạng thái đại diện cho câu và chúng ta sẽ thực hiện một số loại kết hợp của
+
+765
+00:59:34.380 --> 00:59:39.180
+các trạng thái ẩn để tính toán những gì chúng ta nghĩ rằng tình cảm là vì vậy câu hỏi của tôi là nếu chúng ta
+
+766
+00:59:39.180 --> 00:59:42.950
+nhìn vào hãy nói trạng thái ẩn tương ứng với từ khủng khiếp và
+
+767
+00:59:42.950 --> 00:59:47.069
+chúng tôi liên quan đến trạng thái ẩn này như là một đại diện của từ khủng khiếp trong
+
+768
+00:59:47.069 --> 00:59:51.960
+bối cảnh của câu vì vậy vì lý do này, chúng tôi thấy một số được gọi là ẩn
+
+769
+00:59:51.960 --> 00:59:55.410
+trong tình huống này là một đại diện theo ngữ cảnh bởi vì
+
+770
+00:59:55.410 --> 00:59:58.380
+ý tưởng là đây là một đại diện của từ khủng khiếp trong bối cảnh của
+
+771
+00:59:58.380 --> 01:00:02.789
+câu vì vậy điều cần suy nghĩ ở đây là ngữ cảnh này
+
+772
+01:00:02.789 --> 01:00:07.200
+đại diện nó chỉ chứa thông tin về bối cảnh bên trái
+
+773
+01:00:07.200 --> 01:00:12.359
+Vì vậy, đối với bối cảnh bên trái là những từ bộ phim và điều này ẩn
+
+774
+01:00:12.359 --> 01:00:16.049
+tuyên bố cái có hộp màu xanh xung quanh nó chỉ thấy thông tin
+
+775
+01:00:16.049 --> 01:00:19.740
+bên trái nó không thấy thông tin của những từ thú vị hoặc cảm thán
+
+776
+01:00:19.740 --> 01:00:25.529
+đánh dấu vì vậy những gì chúng ta hỏi là những gì về bối cảnh phù hợp bối cảnh đúng của
+
+777
+01:00:25.529 --> 01:00:29.819
+khủng khiếp là từ thú vị và dấu chấm than và chúng ta có nghĩ rằng
+
+778
+01:00:29.819 --> 01:00:34.349
+bối cảnh phù hợp là hữu ích ở đây, chúng tôi nghĩ rằng đây là một cái gì đó chúng tôi muốn
+
+779
+01:00:34.349 --> 01:00:38.279
+biết về và tôi sẽ tranh luận rằng trong ví dụ này nó thực sự là loại
+
+780
+01:00:38.279 --> 01:00:42.569
+quan trọng bởi vì chúng tôi đã có cụm từ cực kỳ thú vị và nếu bạn nhìn vào
+
+781
+01:00:42.569 --> 01:00:46.349
+từ khủng khiếp trong sự cô lập khủng khiếp hoặc khủng khiếp thường có nghĩa là một cái gì đó xấu
+
+782
+01:00:46.349 --> 01:00:49.410
+đúng nhưng cực kỳ thú vị thường có nghĩa là một cái gì đó tốt bởi vì nó chỉ
+
+783
+01:00:49.410 --> 01:00:54.180
+có nghĩa là rất thú vị vì vậy nếu bạn biết về bối cảnh phù hợp thì những từ thú vị
+
+784
+01:00:54.180 --> 01:00:58.559
+sau đó điều này có thể thay đổi đáng kể nhận thức của bạn về ý nghĩa của
+
+785
+01:00:58.559 --> 01:01:02.130
+từ khủng khiếp trong ngữ cảnh của câu này và đặc biệt là chúng ta
+
+786
+01:01:02.130 --> 01:01:05.690
+cố gắng phân loại tình cảm, đây là loại quan trọng
+
+787
+01:01:05.690 --> 01:01:10.980
+điều này thúc đẩy lý do tại sao bạn có thể muốn có thông tin từ cả bên trái và
+
+788
+01:01:10.980 --> 01:01:15.930
+đúng khi bạn làm đại diện nếu khi bạn là một đứa trẻ
+
+789
+01:01:15.930 --> 01:01:18.779
+cha mẹ của bạn bảo bạn nhìn cả hai chiều trước khi bạn băng qua đường
+
+790
+01:01:18.779 --> 01:01:21.869
+coi đó là cùng một loại ý tưởng có thông tin hữu ích ở bên trái
+
+791
+01:01:21.869 --> 01:01:25.829
+và quyền mà bạn muốn biết trước khi bạn làm bất cứ điều gì ổn
+
+792
+01:01:25.829 --> 01:01:30.809
+đó là động lực và đây là cách mà một rnm hai chiều có thể hoạt động trong
+
+793
+01:01:30.809 --> 01:01:36.569
+thực hành Tôi có một loại màu sắc lễ hội vô tình ở đây vì vậy ý ​​tưởng là
+
+794
+01:01:36.569 --> 01:01:40.320
+rằng bạn có hai rnns đang diễn ra, bạn có RNN chuyển tiếp như
+
+795
+01:01:40.320 --> 01:01:44.700
+cho rằng mã hóa câu từ trái sang phải và sau đó riêng bạn cũng có
+
+796
+01:01:44.700 --> 01:01:49.740
+một RNN ngược và điều này có trọng số hoàn toàn riêng biệt đối với RM chuyển tiếp vì vậy
+
+797
+01:01:49.740 --> 01:01:54.540
+RNN lạc hậu cũng đang làm điều tương tự ngoại trừ việc nó mã hóa
+
+798
+01:01:54.540 --> 01:01:58.680
+chuỗi từ phải sang trái để mỗi trạng thái ẩn được tính dựa trên
+
+799
+01:01:58.680 --> 01:02:02.490
+bên phải và cuối cùng bạn chỉ cần lấy các trạng thái ẩn từ
+
+800
+01:02:02.490 --> 01:02:07.440
+hai Arlen và sau đó bạn có thể catenate chúng với nhau và bạn đã có của bạn
+
+801
+01:02:07.440 --> 01:02:12.360
+loại đại diện cuối cùng đặc biệt nếu bây giờ chúng ta nghĩ về điều này
+
+802
+01:02:12.360 --> 01:02:19.020
+đại diện cây bối cảnh của từ khủng khiếp trong bối cảnh vectơ này
+
+803
+01:02:19.020 --> 01:02:22.740
+có thông tin từ cả bên trái và bên phải vì anh ta có
+
+804
+01:02:22.740 --> 01:02:25.830
+về phía trước và sừng phía sau tôn trọng rằng họ có thông tin từ
+
+805
+01:02:25.830 --> 01:02:30.090
+cả bên trái và bên phải vì vậy những ý tưởng của những trạng thái ẩn được ghép nối này
+
+806
+01:02:30.090 --> 01:02:34.470
+những cái đó có thể được coi là loại giống như đầu ra của RNN hai chiều
+
+807
+01:02:34.470 --> 01:02:37.110
+giống như nếu bạn sẽ sử dụng các Quốc gia ẩn này cho bất kỳ loại nào khác
+
+808
+01:02:37.110 --> 01:02:40.500
+tính toán sau đó là những trạng thái ẩn được ghép nối mà bạn sẽ trở thành
+
+809
+01:02:40.500 --> 01:02:47.160
+chuyển sang phần tiếp theo của mạng ở đây trong các phương trình
+
+810
+01:02:47.160 --> 01:02:51.630
+chỉ cần nói điều tương tự để bạn có RNN chuyển tiếp và ở đây chúng tôi đã có một
+
+811
+01:02:51.630 --> 01:02:55.650
+ký hiệu mà bạn có thể chưa từng thấy trước loại ký hiệu này so với R
+
+812
+01:02:55.650 --> 01:02:59.340
+và N và sau đó trong ngoặc là trạng thái ẩn trước đó và đầu vào đơn giản là
+
+813
+01:02:59.340 --> 01:03:03.630
+nói rằng bạn biết HT được tính từ các Quốc gia ẩn trước đó và
+
+814
+01:03:03.630 --> 01:03:08.910
+đầu vào và RN n chuyển tiếp có thể là vanilla hoặc GRU hoặc LS TM mà nó không
+
+815
+01:03:08.910 --> 01:03:14.760
+thực sự quan trọng vì vậy chúng tôi đang xem xét nó một cách trừu tượng để bạn có hai
+
+816
+01:03:14.760 --> 01:03:18.930
+các đầu RN riêng biệt là nn về phía trước và RN ngược và nói chung là có
+
+817
+01:03:18.930 --> 01:03:21.780
+trọng lượng riêng biệt mặc dù tôi đã thấy một số giấy tờ nơi họ đã chia sẻ cách
+
+818
+01:03:21.780 --> 01:03:24.630
+Vì vậy, có vẻ như đôi khi nó hoạt động tốt hơn có lẽ khi bạn có
+
+819
+01:03:24.630 --> 01:03:31.110
+một dữ liệu đào tạo và cuối cùng chúng tôi coi các trạng thái ẩn được nối này
+
+820
+01:03:31.110 --> 01:03:35.610
+mà bạn có thể nhận thấy HT giống như các trạng thái ẩn của
+
+821
+01:03:35.610 --> 01:03:43.290
+bi-directional hoặc M nên sơ đồ trước khá khó sử dụng nên đây là một
+
+822
+01:03:43.290 --> 01:03:46.260
+sơ đồ đơn giản hóa và đây có lẽ là loại sơ đồ duy nhất bạn sẽ
+
+823
+01:03:46.260 --> 01:03:50.580
+nhìn từ bây giờ để biểu thị theo hướng RN kết thúc, vì vậy tất cả những gì chúng tôi đã làm ở đây là chúng tôi
+
+824
+01:03:50.580 --> 01:03:53.890
+chỉ cần làm cho tất cả các mũi tên ngang đi sang trái và phải
+
+825
+01:03:53.890 --> 01:03:57.820
+đại diện rằng đây là một RM hai chiều vì vậy điều khác bạn nên giả sử
+
+826
+01:03:57.820 --> 01:04:02.680
+Có phải các trạng thái ẩn được mô tả ở đây bạn biết những màu đỏ này đang thử màu đỏ
+
+827
+01:04:02.680 --> 01:04:06.100
+hình chữ nhật với các dấu chấm bạn có thể giả sử rằng những hình mà chúng được nối
+
+828
+01:04:06.100 --> 01:04:17.200
+chuyển tiếp các trạng thái ẩn về phía sau từ rnm hai chiều được rồi
+
+829
+01:04:17.200 --> 01:04:21.130
+câu hỏi là bạn sẽ đào tạo RN tiến và lùi của bạn kết thúc loại
+
+830
+01:04:21.130 --> 01:04:25.540
+riêng biệt về một số loại nhiệm vụ và sau đó có thể nối chúng lại với nhau một lần
+
+831
+01:04:25.540 --> 01:04:30.070
+chúng được đào tạo riêng biệt hoặc bạn sẽ đào tạo tất cả chúng cùng nhau
+
+832
+01:04:30.070 --> 01:04:33.430
+đối với tôi có vẻ phổ biến hơn nhiều khi đào tạo họ cùng nhau nhưng tôi không nghĩ
+
+833
+01:04:33.430 --> 01:04:36.280
+Tôi đã nghe nói về bất cứ ai đào tạo họ một cách riêng biệt nên vâng có vẻ như
+
+834
+01:04:36.280 --> 01:04:54.460
+thực hành tiêu chuẩn thường là để đào tạo họ với nhau vì vậy giả sử rằng chúng ta
+
+835
+01:04:54.460 --> 01:04:58.240
+đã cố gắng xây dựng một hệ thống phân loại tình cảm bằng cách sử dụng
+
+836
+01:04:58.240 --> 01:05:01.690
+RNN hai chiều sau đó những gì bạn làm mà có lẽ tôi nên có hình màu đỏ
+
+837
+01:05:01.690 --> 01:05:05.560
+trong không gian đó là bạn sẽ làm điều tương tự như bạn đã làm với
+
+838
+01:05:05.560 --> 01:05:10.870
+RNN đơn hướng mà người ta nói có nghĩa là tối đa theo yếu tố hoặc tối đa để có được
+
+839
+01:05:10.870 --> 01:05:17.190
+mã hóa câu có thể bạn chỉ cần làm điều đó nhưng qua ngày kết thúc kết nối
+
+840
+01:05:17.190 --> 01:05:22.030
+được rồi, một điều quan trọng cần lưu ý là khi nói về việc áp dụng
+
+841
+01:05:22.030 --> 01:05:25.480
+RN hai chiều kết thúc, chúng tôi cho rằng chúng tôi thực sự có quyền truy cập vào
+
+842
+01:05:25.480 --> 01:05:29.740
+toàn bộ chuỗi đầu vào vì vậy chúng tôi giả sử rằng chúng tôi có toàn bộ câu trong phim
+
+843
+01:05:29.740 --> 01:05:34.900
+rất thú vị và đó là một giả định cần thiết để có thể
+
+844
+01:05:34.900 --> 01:05:39.430
+để chạy tiến và lùi hoặc phải M để có một số tình huống
+
+845
+01:05:39.430 --> 01:05:43.780
+nơi bạn không thể giả sử ví dụ cuộc sống này trong mô hình ngôn ngữ mà bạn chỉ có
+
+846
+01:05:43.780 --> 01:05:47.800
+truy cập vào loại ngữ cảnh bên trái theo định nghĩa của nhiệm vụ mà bạn chỉ biết
+
+847
+01:05:47.800 --> 01:05:52.510
+từ này đến nay bạn không biết điều gì sẽ xảy ra tiếp theo nên bạn không thể sử dụng
+
+848
+01:05:52.510 --> 01:05:56.740
+RNN hai chiều để thực hiện mô hình hóa ngôn ngữ theo cách mà chúng tôi đã mô tả
+
+849
+01:05:56.740 --> 01:06:01.690
+ở đây vì bạn không có trình tự tuy nhiên nếu bạn có quyền truy cập
+
+850
+01:06:01.690 --> 01:06:05.170
+ví dụ như toàn bộ chuỗi nếu bạn đang thực hiện bất kỳ loại mã hóa nào
+
+851
+01:06:05.170 --> 01:06:10.090
+tương tự như ví dụ tình cảm này sau đó hai chiều hai chiều
+
+852
+01:06:10.090 --> 01:06:13.990
+là khá mạnh mẽ và thường có thể được coi là một điều tốt để làm
+
+853
+01:06:13.990 --> 01:06:17.170
+mặc định vì hóa ra họ đang nhận thông tin này từ cả hai
+
+854
+01:06:17.170 --> 01:06:22.330
+bên trái và bên phải giúp dễ dàng hơn nhiều để tìm hiểu những ngữ cảnh hữu ích hơn này
+
+855
+01:06:22.330 --> 01:06:26.440
+đại diện cụ thể như là một bản xem trước của một cái gì đó bạn sẽ
+
+856
+01:06:26.440 --> 01:06:31.270
+tìm hiểu về sau này trong lớp có một mô hình gọi là Bert BER T và đó là
+
+857
+01:06:31.270 --> 01:06:34.180
+cho các đại diện bộ mã hóa hai chiều từ máy biến áp và
+
+858
+01:06:34.180 --> 01:06:39.850
+đây là một hệ thống gần đây giống như một vài tháng trước và đây là hệ thống
+
+859
+01:06:39.850 --> 01:06:45.070
+hệ thống đại diện theo ngữ cảnh được đào tạo trước và nó phụ thuộc rất nhiều vào
+
+860
+01:06:45.070 --> 01:06:49.330
+ý tưởng về tính hai chiều hóa ra bản chất hai chiều của Bert
+
+861
+01:06:49.330 --> 01:06:53.410
+là khá quan trọng đối với thành công của nó để bạn có thể tìm hiểu thêm về điều đó sau nhưng
+
+862
+01:06:53.410 --> 01:06:55.870
+đó chỉ là một ví dụ về cách hai chiều bạn có thể cung cấp cho bạn nhiều
+
+863
+01:06:55.870 --> 01:07:02.170
+đại diện theo ngữ cảnh mạnh mẽ hơn được rồi, vì vậy điều cuối cùng chúng ta sẽ nói
+
+864
+01:07:02.170 --> 01:07:08.380
+về ngày hôm nay là các RNA đa lớp vì vậy bạn có thể coi rnns đã được sâu
+
+865
+01:07:08.380 --> 01:07:13.660
+trong một số ý nghĩa bởi vì bạn đã hủy đăng ký chúng trong rất nhiều thời gian
+
+866
+01:07:13.660 --> 01:07:17.620
+các bước và bạn có thể coi đó là một loại chiều sâu đúng nhưng có một thứ khác
+
+867
+01:07:17.620 --> 01:07:23.320
+cách mà RN có thể sâu, ví dụ nếu bạn áp dụng nhiều kết thúc RN
+
+868
+01:07:23.320 --> 01:07:27.430
+loại này đến cái khác thì đây sẽ là một cách khác để tạo RN của bạn
+
+869
+01:07:27.430 --> 01:07:35.260
+và sâu sắc và đây là ý tưởng giữa đằng sau nhiều lớp RM, vậy lý do tại sao
+
+870
+01:07:35.260 --> 01:07:38.740
+bạn muốn làm điều này là bởi vì điều này có thể cho phép mạng tính toán
+
+871
+01:07:38.740 --> 01:07:42.880
+các biểu diễn phức tạp hơn vì vậy đây là logic ngay phía sau sâu
+
+872
+01:07:42.880 --> 01:07:45.820
+các mạng nói chung vì vậy nếu bạn quen thuộc với ý tưởng về Y sâu hơn là
+
+873
+01:07:45.820 --> 01:07:48.580
+tốt hơn cho giả sử các mạng chập thì đây là loại tương tự
+
+874
+01:07:48.580 --> 01:07:54.400
+logic rằng nó nói rằng kết thúc RN thấp của bạn có thể tính toán các tính năng cấp thấp hơn
+
+875
+01:07:54.400 --> 01:07:58.090
+giống như giả sử có thể đó chỉ là một cú pháp và RN cấp cao hơn của bạn
+
+876
+01:07:58.090 --> 01:08:03.190
+kết thúc sẽ tính toán các tính năng cấp cao như có thể là ngữ nghĩa và ghi chú
+
+877
+01:08:03.190 --> 01:08:07.960
+về thuật ngữ đôi khi chúng được gọi là xếp chồng Arnett vì vậy điều này hoạt động
+
+878
+01:08:07.960 --> 01:08:13.120
+nhiều như bạn tưởng tượng, đây là một ví dụ về cách RN nhiều lớp có thể
+
+879
+01:08:13.120 --> 01:08:19.120
+hoạt động nếu đó là ba lớp, vì vậy đây là một RNN đơn hướng nhưng nó có thể là
+
+880
+01:08:19.120 --> 01:08:22.448
+hai chiều nếu bạn có quyền truy cập vào toàn bộ đầu vào
+
+881
+01:08:22.448 --> 01:08:28.238
+trình tự vì vậy tôi đoán điều chính là các quốc gia ẩn từ một RNN
+
+882
+01:08:28.238 --> 01:08:37.508
+lớp sẽ được sử dụng làm đầu vào cho lớp RNN tiếp theo bất kỳ
+
+883
+01:08:37.509 --> 01:08:48.130
+câu hỏi về điều này yeah đó là một câu hỏi tuyệt vời vì vậy câu hỏi tôi nghĩ là
+
+884
+01:08:48.130 --> 01:08:51.370
+về thứ tự cạnh tranh như thứ tự nào bạn sẽ tính toán tất cả những thứ này
+
+885
+01:08:51.370 --> 01:08:57.430
+Các quốc gia ẩn trong tôi cho rằng có một số quyền linh hoạt nhưng bạn có thể tính toán
+
+886
+01:08:57.430 --> 01:09:02.410
+tất cả các bước một giống như tất cả các V và sau đó là tất cả các phim hay
+
+887
+01:09:02.410 --> 01:09:06.250
+bạn có thể làm tất cả lớp nn của chúng tôi một và sau đó tất cả lớp nn hai của chúng tôi
+
+888
+01:09:06.250 --> 01:09:10.210
+Tôi nghĩ rằng khi bạn biết hãy gọi PI để xem chức năng để thực hiện
+
+889
+01:09:10.210 --> 01:09:14.140
+RNN nhiều lớp, nó sẽ thực hiện tất cả lớp N của chúng tôi sau đó là 2003, đó là những gì tôi nghĩ
+
+890
+01:09:14.140 --> 01:09:18.509
+xảy ra nhưng có vẻ như logic không có lý do tại sao bạn không thể làm điều đó
+
+891
+01:09:18.509 --> 01:09:35.080
+vâng đó cũng là một điểm tuyệt vời vì vậy ai đó đã chỉ ra rằng nếu họ là
+
+892
+01:09:35.080 --> 01:09:38.109
+hai chiều sau đó bạn không còn có sự linh hoạt mà bạn sẽ phải làm
+
+893
+01:09:38.109 --> 01:09:41.670
+Tất cả các lớp rượu trước lớp 2 yeah điểm tốt
+
+894
+01:09:41.670 --> 01:09:55.239
+bất cứ ai khác ok vì vậy chủ yếu là n của chúng tôi kết thúc trong thực tế hàng chục đã trở nên đẹp
+
+895
+01:09:55.239 --> 01:10:00.100
+tốt khi tôi nhìn vào các hệ thống dựa trên nn của chúng tôi đang hoạt động rất tốt
+
+896
+01:10:00.100 --> 01:10:04.600
+trên một số loại nhiệm vụ, chúng thường là một loại RN n nhiều lớp nhưng chúng
+
+897
+01:10:04.600 --> 01:10:08.620
+chắc chắn không sâu bằng các mạng chuyển tiếp tích chập sâu bạn
+
+898
+01:10:08.620 --> 01:10:12.100
+có thể đã thấy trong các tác vụ hình ảnh ví dụ vì vậy trong khi bạn biết rất sâu
+
+899
+01:10:12.100 --> 01:10:15.699
+Tôi nghĩ rằng hàng trăm lớp bây giờ bạn chắc chắn sẽ không nhận được Oran kết thúc
+
+900
+01:10:15.699 --> 01:10:22.780
+đó là sâu sắc, ví dụ như trong bài báo này từ Google họ đang làm
+
+901
+01:10:22.780 --> 01:10:26.110
+loại tìm kiếm tham số siêu lớn này cho một bản dịch máy thần kinh
+
+902
+01:10:26.110 --> 01:10:30.760
+để tìm ra loại thông số cao nào hoạt động tốt và trong bài báo này
+
+903
+01:10:30.760 --> 01:10:33.750
+thấy rằng hai đến bốn lớp là tốt nhất cho bộ mã hóa
+
+904
+01:10:33.750 --> 01:10:37.620
+và bốn lớp là tốt nhất cho bộ giải mã Doronin, bạn sẽ tìm hiểu thêm về những gì
+
+905
+01:10:37.620 --> 01:10:41.250
+Bộ mã hóa và giải mã có nghĩa là lần sau nhưng đó là những con số khá nhỏ mặc dù
+
+906
+01:10:41.250 --> 01:10:44.610
+họ đã thấy rằng nếu bạn thêm các kết nối bỏ qua hoặc các kết nối dày đặc này
+
+907
+01:10:44.610 --> 01:10:49.710
+sau đó nó làm cho nó dễ dàng hơn để tìm hiểu một số thậm chí sâu hơn hiệu quả hơn
+
+908
+01:10:49.710 --> 01:10:53.100
+giống như có thể lên đến tám lớp nhưng những lớp này chắc chắn không sâu hàng trăm lớp
+
+909
+01:10:53.100 --> 01:10:58.380
+và một trong những lý do tại sao rnns không có xu hướng sâu như những người khác
+
+910
+01:10:58.380 --> 01:11:02.460
+các loại mạng là bởi vì như chúng tôi đã nhận xét trước khi kết thúc của chúng ta phải
+
+911
+01:11:02.460 --> 01:11:05.940
+Tính toán tuần tự chúng không thể được tính toán song song điều này có nghĩa là
+
+912
+01:11:05.940 --> 01:11:08.970
+chúng khá đắt để tính toán nếu bạn có độ sâu như hai
+
+913
+01:11:08.970 --> 01:11:12.090
+kích thước bạn có độ sâu theo các bước thời gian và sau đó độ sâu trên
+
+914
+01:11:12.090 --> 01:11:16.500
+Các lớp RNN sau đó nó bắt đầu trở nên rất tốn kém để tính toán các lớp này
+
+915
+01:11:16.500 --> 01:11:21.990
+đây là những kết thúc vì vậy đó là một lý do khác khiến chúng không thể tiến sâu trở lại
+
+916
+01:11:21.990 --> 01:11:25.470
+chỉ đề cập đến máy biến áp bạn sẽ tìm hiểu về máy biến áp sau nhưng
+
+917
+01:11:25.470 --> 01:11:31.170
+những điều này dường như có thể sâu sắc hơn từ những gì tôi có thể nói về những gì mọi người đang có
+
+918
+01:11:31.170 --> 01:11:34.950
+sử dụng những ngày này, các mạng dựa trên biến đổi có thể khá sâu nên Burt cho
+
+919
+01:11:34.950 --> 01:11:39.030
+ví dụ có phiên bản 24 lớp và phiên bản 12 người chơi và phải thừa nhận rằng
+
+920
+01:11:39.030 --> 01:11:42.900
+được đào tạo bởi Google và họ có rất nhiều sức mạnh tính toán nhưng tôi nghĩ
+
+921
+01:11:42.900 --> 01:11:46.020
+một phần lý do tại sao các mạng dựa trên máy biến áp này có thể khá sâu là
+
+922
+01:11:46.020 --> 01:11:50.130
+họ có rất nhiều kết nối ánh sáng bị bỏ qua trong thực tế toàn bộ sự đổi mới
+
+923
+01:11:50.130 --> 01:11:56.370
+của máy biến áp là chúng được chế tạo dựa trên sự mất kết nối bỏ qua
+
+924
+01:11:56.370 --> 01:12:03.480
+Bất kỳ câu hỏi nào con trai của Rama đều ổn cả, vì vậy đây là tóm tắt về những gì chúng ta đã
+
+925
+01:12:03.480 --> 01:12:08.280
+đã học ngày hôm nay tôi biết đó là rất nhiều thông tin nhưng tôi nghĩ ở đây có đầy đủ
+
+926
+01:12:08.280 --> 01:12:13.680
+những bước đi thực tế từ hôm nay có lẽ hữu ích cho bạn trong các dự án của bạn
+
+927
+01:12:13.680 --> 01:12:20.430
+ngay cả khi bạn thậm chí không thấy mình rất thú vị
+
+928
+01:12:20.430 --> 01:12:24.360
+khá hữu ích vì vậy điều đầu tiên là LS VM rất mạnh
+
+929
+01:12:24.360 --> 01:12:29.130
+chắc chắn rất nhiều mạnh hơn mạnh hơn vanilla là địa lý dày đặc
+
+930
+01:12:29.130 --> 01:12:33.180
+cũng mạnh hơn irv noren và sự khác biệt duy nhất đó là
+
+931
+01:12:33.180 --> 01:12:38.250
+luôn luôn giống nhau là việc sử dụng GI nhanh hơn đập Trái đất, lần tiếp theo
+
+932
+01:12:38.250 --> 01:12:41.430
+bạn có nên cắt bớt độ dốc của mình không vì nếu bạn không cắt
+
+933
+01:12:41.430 --> 01:12:45.810
+độ dốc bạn có nguy cơ đi ra khỏi vách đá và sau đó kết thúc với Nan
+
+934
+01:12:45.810 --> 01:12:49.920
+trong mô hình của bạn, mẹo tiếp theo là tính hai chiều là
+
+935
+01:12:49.920 --> 01:12:54.540
+hữu ích nếu bạn có thể áp dụng nó và về cơ bản bất cứ lúc nào khi bạn có quyền truy cập vào
+
+936
+01:12:54.540 --> 01:12:58.590
+toàn bộ chuỗi đầu vào bạn có thể áp dụng theo hướng, do đó bạn có thể nên làm
+
+937
+01:12:58.590 --> 01:13:02.940
+theo mặc định và sau đó là mẹo cuối cùng là rnns nhiều lớp
+
+938
+01:13:02.940 --> 01:13:06.780
+khá mạnh mẽ và một lần nữa có lẽ bạn nên làm điều đó nếu bạn có đủ
+
+939
+01:13:06.780 --> 01:13:10.650
+sức mạnh tính toán để làm như vậy nhưng nếu bạn định tạo RNN mô-đun của mình
+
+940
+01:13:10.650 --> 01:13:16.400
+khá sâu sau đó bạn có thể cần phải bỏ qua các kết nối, cảm ơn
+
