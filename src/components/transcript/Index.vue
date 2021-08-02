@@ -13,10 +13,12 @@
    name: "VideoPlayer",
    props: {
      videoId: String,
+     startTime: Number,
      lagTime: Number
    },
    data() {
      return {
+       didInitSeek: false
      }
    },
    created: () => {
@@ -34,12 +36,16 @@
        this.player.pauseVideo();
      },
      resume() {
+       if (this.didInitSeek == false) {
+         this.player.seekTo(parseFloat(this.startTime) + parseFloat(this.lagTime));
+         this.didInitSeek = true;
+       }
        this.player.playVideo();
      }
    },
    computed: {
      player() {
-       return this.$refs.youtube.player
+       return this.$refs.youtube.player;
      }
    },
  };

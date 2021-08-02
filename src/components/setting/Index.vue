@@ -9,7 +9,8 @@
                 <li>Set the lag time</li>
                 <li>Unmute the player video</li>
                 <li>Play and shadowing</li>
-                <li>Press "p" to resume/pause</li>
+                <li>Press "q" to resume/pause player on the left</li>
+                <li>Press "p" to resume/pause transcript on the right</li>
             </ul>
         </div>
         <p>Note: I find the best lag time is about 3s.

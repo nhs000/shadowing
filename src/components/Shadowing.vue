@@ -5,16 +5,16 @@
         </div>
         <div v-if="doneSettingFlg">
             <div>
-                <button @click="play">{{isPlayed ? "Restart" : "Play"}}</button>
-                <button @click="togglePause" v-if="isPlayed">{{isPaused ? "Resume" : "Pause"}}</button>
+                <!-- <button @click="reset">{{isPlayed ? "Restart" : "Play"}}</button> -->
+                <!-- <button @click="togglePause" v-if="isPlayed">{{isPaused ? "Resume" : "Pause"}}</button> -->
                 <!-- <button @click="resume">Resume</button> -->
             </div>
             <div id='video-player-wrapper'>
-                <video-player ref="player" :video-id="videoId" />
+                <video-player ref="player" :start-time="startTime" :video-id="videoId" />
             </div>
             <div id='text-section'>
                 <div id='transcript-wrapper'>
-                    <transcript ref="transcript" :lag-time="lagTime" :video-id="videoId"/>
+                    <transcript ref="transcript" :start-time="startTime" :lag-time="lagTime" :video-id="videoId"/>
                 </div>
                 <!-- <div id='tts-dialog-wrapper'>
                      <SpeechRecognition/>
@@ -35,8 +35,9 @@
    data: () => {
      return {
        doneSettingFlg: false,
-       isPaused: true,
-       isPlayed: false
+       isPausedPlayer: true,
+       isPausedTranscript: true,
+       /* isPlayed: false */
      }
    },
    components: {
@@ -48,28 +49,43 @@
    created: function() {
      window.addEventListener('keyup', (e) => {
        if (e.keyCode == 80) {
-         if (this.isPlayed == false) this.play();
-         this.togglePause();
+         /* if (this.isPlayed == false) this.play(); */
+         this.togglePauseTranscript();
+       }
+       if (e.keyCode == 81) {
+         /* if (this.isPlayed == false) this.play(); */
+         this.togglePausePlayer();
        }
      });
    },
    computed: {
    },
    methods: {
-     play() {
-       this.$refs.player.playAt(this.startTime);
-       this.$refs.transcript.playAt(this.startTime);
-       this.isPlayed = true;
-     },
-     togglePause() {
-       if (this.isPaused) {
-         this.$refs.player.resume();
+     /* play() {
+      *   this.$refs.player.playAt(this.startTime);
+      *   this.$refs.transcript.playAt(this.startTime);
+      *   this.isPlayed = true;
+      * }, */
+     togglePauseTranscript() {
+       if (this.isPausedTranscript) {
+         /* this.$refs.player.resume(); */
          this.$refs.transcript.resume();
-         this.isPaused = false;
+         this.isPausedTranscript = false;
+       } else {
+         /* this.$refs.player.pause(); */
+         this.$refs.transcript.pause();
+         this.isPausedTranscript = true;
+       }
+     },
+     togglePausePlayer() {
+       if (this.isPausedPlayer) {
+         this.$refs.player.resume();
+         /* this.$refs.transcript.resume(); */
+         this.isPausedPlayer = false;
        } else {
          this.$refs.player.pause();
-         this.$refs.transcript.pause();
-         this.isPaused = true;
+         /* this.$refs.transcript.pause(); */
+         this.isPausedPlayer = true;
        }
      },
      /* resume() {
@@ -78,8 +94,8 @@
       * }, */
      setInitValues() {
        this.videoId = this.$refs.settingComp.videoId;
-       this.startTime = this.$refs.settingComp.startTime;
-       this.lagTime = this.$refs.settingComp.lagTime;
+       this.startTime = parseFloat(this.$refs.settingComp.startTime);
+       this.lagTime = parseFloat(this.$refs.settingComp.lagTime);
        this.doneSettingFlg = true;
      }
    }

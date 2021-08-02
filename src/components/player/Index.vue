@@ -9,10 +9,12 @@
  export default {
    name: "VideoPlayer",
    props: {
-     videoId: String
+     videoId: String,
+     startTime: Number
    },
    data() {
      return {
+       didInitSeek: false
      }
    },
    methods: {
@@ -26,6 +28,10 @@
        this.player.pauseVideo();
      },
      resume() {
+       if (this.didInitSeek == false) {
+         this.player.seekTo(parseFloat(this.startTime));
+         this.didInitSeek = true;
+       }
        this.player.playVideo();
      }
    },
