@@ -236,31 +236,55 @@ export default {
     },
     
     async seekBackward() {
+      const wasPlaying = !this.isPausedPlayer;
+      
       // For player video
       const player = this.$refs.player.player;
       if (player) {
         const currentTime = await player.getCurrentTime();
         const newTime = Math.max(0, currentTime - 3);
-        this.$refs.player.playAt(newTime);
+        
+        // Just seek without forcing play
+        player.seekTo(newTime);
+        if (wasPlaying) {
+          player.playVideo();
+        } else {
+          player.pauseVideo();
+        }
       }
       
-      // For transcript video - subtract lag time before passing to playAt
+      // For transcript video
       const transcript = this.$refs.transcript.player;
       if (transcript) {
         const currentTime = await transcript.getCurrentTime();
         const newTime = Math.max(0, currentTime - 3);
-        // Subtract lag time since the playAt method will add it back
-        this.$refs.transcript.playAt(newTime - parseFloat(this.lagTime));
+        
+        // Just seek without forcing play
+        transcript.seekTo(newTime - parseFloat(this.lagTime) + parseFloat(this.lagTime));
+        if (!this.isPausedTranscript) {
+          transcript.playVideo();
+        } else {
+          transcript.pauseVideo();
+        }
       }
     },
     
     async seekForward() {
+      const wasPlaying = !this.isPausedPlayer;
+      
       // For player video
       const player = this.$refs.player.player;
       if (player) {
         const currentTime = await player.getCurrentTime();
         const newTime = currentTime + 3;
-        this.$refs.player.playAt(newTime);
+        
+        // Just seek without forcing play
+        player.seekTo(newTime);
+        if (wasPlaying) {
+          player.playVideo();
+        } else {
+          player.pauseVideo();
+        }
       }
       
       // For transcript video
@@ -268,8 +292,14 @@ export default {
       if (transcript) {
         const currentTime = await transcript.getCurrentTime();
         const newTime = currentTime + 3;
-        // Subtract lag time since the playAt method will add it back
-        this.$refs.transcript.playAt(newTime - parseFloat(this.lagTime));
+        
+        // Just seek without forcing play
+        transcript.seekTo(newTime - parseFloat(this.lagTime) + parseFloat(this.lagTime));
+        if (!this.isPausedTranscript) {
+          transcript.playVideo();
+        } else {
+          transcript.pauseVideo();
+        }
       }
     },
     
