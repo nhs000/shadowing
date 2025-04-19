@@ -236,37 +236,40 @@ export default {
     },
     
     async seekBackward() {
-      // Get current time from player video and seek both videos 3 seconds back
+      // For player video
       const player = this.$refs.player.player;
       if (player) {
         const currentTime = await player.getCurrentTime();
-        const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
+        const newTime = Math.max(0, currentTime - 3);
         this.$refs.player.playAt(newTime);
       }
       
+      // For transcript video - subtract lag time before passing to playAt
       const transcript = this.$refs.transcript.player;
       if (transcript) {
         const currentTime = await transcript.getCurrentTime();
-        console.log("Current time: " + currentTime);
-        const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
-        console.log("New time: " + newTime);
-        this.$refs.transcript.playAt(newTime);
+        const newTime = Math.max(0, currentTime - 3);
+        // Subtract lag time since the playAt method will add it back
+        this.$refs.transcript.playAt(newTime - parseFloat(this.lagTime));
       }
     },
     
     async seekForward() {
-      // Get current time from player video and seek both videos 3 seconds forward
+      // For player video
       const player = this.$refs.player.player;
       if (player) {
         const currentTime = await player.getCurrentTime();
         const newTime = currentTime + 3;
         this.$refs.player.playAt(newTime);
       }
+      
+      // For transcript video
       const transcript = this.$refs.transcript.player;
       if (transcript) {
         const currentTime = await transcript.getCurrentTime();
         const newTime = currentTime + 3;
-        this.$refs.transcript.playAt(newTime);
+        // Subtract lag time since the playAt method will add it back
+        this.$refs.transcript.playAt(newTime - parseFloat(this.lagTime));
       }
     },
     
