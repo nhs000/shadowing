@@ -12,21 +12,32 @@
             <span>Transcript ahead by: <strong>{{ lagTime }}s</strong></span>
           </div>
         </div>
-        <div class="playback-controls">
-          <button @click="reset" class="control-btn">
-            <i class="icon-restart"></i> Restart
-          </button>
-          <button @click="togglePausePlayer" class="control-btn" :class="{ active: !isPausedPlayer }">
-            <i :class="isPausedPlayer ? 'icon-play' : 'icon-pause'"></i> 
-            {{ isPausedPlayer ? "Play" : "Pause" }} Player
-          </button>
-          <button @click="togglePauseTranscript" class="control-btn" :class="{ active: !isPausedTranscript }">
-            <i :class="isPausedTranscript ? 'icon-play' : 'icon-pause'"></i> 
-            {{ isPausedTranscript ? "Play" : "Pause" }} Transcript
-          </button>
-          <button @click="playBoth" class="control-btn primary">
-            <i class="icon-play-all"></i> Play Both
-          </button>
+        
+        <div class="playback-controls-container">
+          <!-- Main centered play/stop controls -->
+          <div class="main-controls">
+            <button @click="playBoth" class="control-btn primary large" title="Play Both">
+              <i class="fas fa-play-circle"></i>
+            </button>
+            <button @click="stopBoth" class="control-btn danger large" title="Stop Both">
+              <i class="fas fa-stop-circle"></i>
+            </button>
+          </div>
+          
+          <!-- Secondary controls below -->
+          <div class="secondary-controls">
+            <button @click="reset" class="control-btn" title="Restart">
+              <i class="fas fa-sync"></i> Restart
+            </button>
+            <button @click="togglePausePlayer" class="control-btn" :class="{ active: !isPausedPlayer }" title="Toggle Player">
+              <i :class="isPausedPlayer ? 'fas fa-play' : 'fas fa-pause'"></i> 
+              {{ isPausedPlayer ? "Play" : "Pause" }} Player
+            </button>
+            <button @click="togglePauseTranscript" class="control-btn" :class="{ active: !isPausedTranscript }" title="Toggle Transcript">
+              <i :class="isPausedTranscript ? 'fas fa-play' : 'fas fa-pause'"></i> 
+              {{ isPausedTranscript ? "Play" : "Pause" }} Transcript
+            </button>
+          </div>
         </div>
       </div>
 
@@ -125,6 +136,12 @@
          /* this.$refs.transcript.pause(); */
          this.isPausedPlayer = true;
        }
+     },
+     stopBoth() {
+       this.$refs.player.pause();
+       this.$refs.transcript.pause();
+       this.isPausedPlayer = true;
+       this.isPausedTranscript = true;
      },
      /* resume() {
       *   this.$refs.player.resume();
@@ -258,5 +275,42 @@
   display: inline-block;
   width: 16px;
   height: 16px;
+}
+
+.playback-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.main-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.secondary-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.control-btn.large {
+  font-size: 24px;
+  padding: 12px 20px;
+  min-width: 80px;
+}
+
+.control-btn.danger {
+  background-color: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+}
+
+.control-btn.danger:hover {
+  background-color: #ff7875;
 }
 </style>
