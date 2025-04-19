@@ -16,8 +16,19 @@
         <div class="playback-controls-container">
           <!-- Main centered play/stop controls -->
           <div class="main-controls">
+            <!-- Backward 3s button -->
+            <button @click="seekBackward" class="control-btn medium" title="Back 3 seconds">
+              <i class="fas fa-backward"></i>
+            </button>
+            
+            <!-- Main play/stop button -->
             <button @click="togglePlayback" class="control-btn large" :class="isPlaying ? 'danger' : 'primary'" :title="isPlaying ? 'Stop' : 'Play'">
               <i class="fas" :class="isPlaying ? 'fa-stop-circle' : 'fa-play-circle'"></i>
+            </button>
+            
+            <!-- Forward 3s button -->
+            <button @click="seekForward" class="control-btn medium" title="Forward 3 seconds">
+              <i class="fas fa-forward"></i>
             </button>
           </div>
           
@@ -74,7 +85,8 @@
       </div>
       
       <div class="keyboard-shortcuts">
-        <p><strong>Keyboard Shortcuts:</strong> Space = Play/Stop Both, P = Toggle Transcript Video, Q = Toggle Player Video</p>
+        <p><strong>Keyboard Shortcuts:</strong> Space = Play/Stop Both, P = Toggle Transcript Video, Q = Toggle Player Video, 
+           Left Arrow = Back 3s, Right Arrow = Forward 3s</p>
       </div>
     </div>
   </div>
@@ -126,6 +138,18 @@
      window.addEventListener('keydown', (e) => {
        if (e.keyCode == 32) {
          e.preventDefault();
+       }
+       
+       // Left arrow for backward
+       if (e.keyCode == 37) {
+         e.preventDefault();
+         this.seekBackward();
+       }
+       
+       // Right arrow for forward
+       if (e.keyCode == 39) {
+         e.preventDefault();
+         this.seekForward();
        }
      });
    },
@@ -199,6 +223,30 @@
      handleTranscriptSubtitleStatus(statusData) {
        this.transcriptSubtitleWarning = !statusData.hasRequestedLanguage;
        this.availableTranscriptTracks = statusData.availableTracks;
+     },
+
+     seekBackward() {
+       // Get current time from player video and seek both videos 3 seconds back
+       const player = this.$refs.player.player;
+       if (player) {
+         const currentTime = player.getCurrentTime();
+         const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
+         
+         this.$refs.player.playAt(newTime);
+         this.$refs.transcript.playAt(newTime); // Lag time is handled by transcript component
+       }
+     },
+
+     seekForward() {
+       // Get current time from player video and seek both videos 3 seconds forward
+       const player = this.$refs.player.player;
+       if (player) {
+         const currentTime = player.getCurrentTime();
+         const newTime = currentTime + 3;
+         
+         this.$refs.player.playAt(newTime);
+         this.$refs.transcript.playAt(newTime); // Lag time is handled by transcript component
+       }
      }
    }
  }
@@ -378,5 +426,11 @@
 
 .control-btn.danger:hover {
   background-color: #ff7875;
+}
+
+.control-btn.medium {
+  font-size: 18px;
+  padding: 10px 16px;
+  min-width: 60px;
 }
 </style>
