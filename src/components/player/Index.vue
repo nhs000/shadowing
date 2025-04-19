@@ -1,7 +1,12 @@
 <template>
     <div>
         <h3>Player.</h3>
-        <youtube :video-id="videoId" ref="youtube" @playing="playing" :start-seconds="100"></youtube>
+        <youtube 
+            :video-id="videoId" 
+            ref="youtube" 
+            @playing="playing" 
+            :player-vars="playerVars">
+        </youtube>
     </div>
 </template>
 
@@ -14,8 +19,18 @@
    },
    data() {
      return {
-       didInitSeek: false
+       didInitSeek: false,
+       playerVars: {
+         start: this.startTime || 0,
+         cc_load_policy: 1, // Force subtitles on
+         cc_lang_pref: 'en', // English subtitles
+         hl: 'en' // English player interface
+       }
      }
+   },
+   mounted() {
+     // Update player variables if props change
+     this.playerVars.start = this.startTime || 0;
    },
    methods: {
      playAt(startTime = 0) {

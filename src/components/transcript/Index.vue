@@ -1,9 +1,12 @@
 <template>
     <div>
         <h3>Transcript.</h3>
-        <youtube :video-id="videoId" ref="youtube"
-          @playing="playing"
-        >
+        <youtube 
+            :video-id="videoId" 
+            ref="youtube"
+            @playing="playing"
+            @ready="onReady"
+            :player-vars="playerVars">
         </youtube>
     </div>
 </template>
@@ -18,12 +21,24 @@
    },
    data() {
      return {
-       didInitSeek: false
+       didInitSeek: false,
+       playerVars: {
+         start: (this.startTime + this.lagTime) || 0,
+         cc_load_policy: 1, // Force subtitles on
+         cc_lang_pref: 'vi', // Vietnamese subtitles
+         hl: 'vi' // Vietnamese player interface
+       }
      }
    },
-   created: () => {
+   mounted() {
+     // Update player variables if props change
+     this.playerVars.start = (parseFloat(this.startTime) + parseFloat(this.lagTime)) || 0;
    },
    methods: {
+     onReady() {
+       // Ensure the video is muted from the beginning
+       this.player.mute();
+     },
      playAt(startTime = 0) {
        this.player.seekTo(parseFloat(startTime) + parseFloat(this.lagTime));
        this.player.mute();
