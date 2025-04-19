@@ -108,7 +108,9 @@ export default {
             playerSubtitleWarning: false,
             transcriptSubtitleWarning: false,
             availablePlayerTracks: [],
-            availableTranscriptTracks: []
+            availableTranscriptTracks: [],
+            saveInterval: null,
+            lastSavedPosition: 0
         }
     },
     components: {
@@ -173,6 +175,9 @@ export default {
                 this.$refs.transcript.pause();
                 this.isPausedPlayer = true;
                 this.isPausedTranscript = true;
+                
+                // Save state when manually paused
+                this.saveCurrentState();
             } else {
                 // If currently stopped, play both videos
                 this.$refs.player.resume();
@@ -213,6 +218,11 @@ export default {
             this.startTime = parseFloat(this.$refs.settingComp.startTime);
             this.lagTime = parseFloat(this.$refs.settingComp.lagTime);
             this.doneSettingFlg = true;
+            
+            // Start auto-save once videos are loaded
+            this.$nextTick(() => {
+                this.startAutoSave();
+            });
         },
         
         handlePlayerSubtitleStatus(statusData) {
@@ -257,8 +267,47 @@ export default {
                 const newTime = currentTime + 3;
                 this.$refs.transcript.playAt(newTime); // Lag time is handled by transcript component
             }
+        },
+
+        saveCurrentState() {
+            // Only save if videos are loaded
+            if (this.$refs.player && this.$refs.player.player) {
+                this.$refs.player.player.getCurrentTime().then(currentTime => {
+                    const stateData = {
+                        videoId: this.videoId,
+                        startTime: this.startTime,
+                        lagTime: this.lagTime,
+                        lastPosition: currentTime,
+                        savedAt: new Date().getTime()
+                    };
+                    
+                    localStorage.setItem('shadowingAppState', JSON.stringify(stateData));
+                    this.lastSavedPosition = currentTime;
+                    console.log('State saved, position:', currentTime);
+                });
+            }
+        },
+        
+        startAutoSave() {
+            // Save state every 5 seconds while playing
+            this.saveInterval = setInterval(() => {
+                if (!this.isPausedPlayer) {
+                    this.saveCurrentState();
+                }
+            }, 5000);
+        },
+        
+        stopAutoSave() {
+            if (this.saveInterval) {
+                clearInterval(this.saveInterval);
+            }
         }
     },
+    beforeDestroy() {
+        this.stopAutoSave();
+        // Save state one last time when component is destroyed
+        this.saveCurrentState();
+    }
 }
 
 </script>
