@@ -26,7 +26,9 @@
          start: (this.startTime + this.lagTime) || 0,
          cc_load_policy: 1, // Force subtitles on
          cc_lang_pref: 'vi', // Vietnamese subtitles
-         hl: 'vi' // Vietnamese player interface
+         hl: 'vi', // Vietnamese player interface
+         rel: 0, // Disable related videos
+         modestbranding: 1 // Hide YouTube logo
        }
      }
    },

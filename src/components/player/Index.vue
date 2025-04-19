@@ -24,7 +24,9 @@
          start: this.startTime || 0,
          cc_load_policy: 1, // Force subtitles on
          cc_lang_pref: 'en', // English subtitles
-         hl: 'en' // English player interface
+         hl: 'en', // English player interface
+         rel: 0, // Disable related videos
+         modestbranding: 1 // Hide YouTube logo
        }
      }
    },
