@@ -6,6 +6,7 @@
             ref="youtube"
             @playing="playing"
             @ready="onReady"
+            @subtitle-status="handleSubtitleStatus"
             :player-vars="playerVars">
         </youtube>
     </div>
@@ -40,6 +41,37 @@
      onReady() {
        // Ensure the video is muted from the beginning
        this.player.mute();
+       
+       // Check subtitle availability after a short delay
+       setTimeout(() => {
+         this.checkSubtitlesAvailability();
+       }, 2000);
+     },
+
+     checkSubtitlesAvailability() {
+       const player = this.$refs.youtube.player;
+       
+       if (player && player.getOption) {
+         try {
+           const tracks = player.getOption('captions', 'tracklist') || [];
+           const languageCode = this.playerVars.cc_lang_pref;
+           const hasRequestedLanguage = tracks.some(track => 
+             track.languageCode === languageCode || track.languageCode.startsWith(languageCode + '-')
+           );
+           
+           this.$emit('subtitle-status', {
+             hasRequestedLanguage,
+             requestedLanguage: languageCode,
+             availableTracks: tracks
+           });
+           
+           return hasRequestedLanguage;
+         } catch (error) {
+           console.error("Error checking subtitle availability:", error);
+           return false;
+         }
+       }
+       return false;
      },
      playAt(startTime = 0) {
        this.player.seekTo(parseFloat(startTime) + parseFloat(this.lagTime));

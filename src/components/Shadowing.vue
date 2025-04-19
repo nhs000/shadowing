@@ -42,14 +42,33 @@
         <div class="video-panel player-panel">
           <h4>Player Video <span class="language-tag">(Target Language)</span></h4>
           <div class="video-wrapper">
-            <video-player ref="player" :start-time="startTime" :video-id="videoId" />
+            <video-player 
+              ref="player" 
+              :start-time="startTime" 
+              :video-id="videoId"
+              @subtitle-status="handlePlayerSubtitleStatus"
+            />
+            <div v-if="playerSubtitleWarning" class="subtitle-warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              English subtitles not available for this video!
+            </div>
           </div>
         </div>
         
         <div class="video-panel transcript-panel">
           <h4>Transcript Video <span class="language-tag">(Original Language)</span></h4>
           <div class="video-wrapper">
-            <transcript ref="transcript" :start-time="startTime" :lag-time="lagTime" :video-id="videoId"/>
+            <transcript 
+              ref="transcript" 
+              :start-time="startTime" 
+              :lag-time="lagTime" 
+              :video-id="videoId"
+              @subtitle-status="handleTranscriptSubtitleStatus"
+            />
+            <div v-if="transcriptSubtitleWarning" class="subtitle-warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              Vietnamese subtitles not available for this video!
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +93,10 @@
        doneSettingFlg: false,
        isPausedPlayer: true,
        isPausedTranscript: true,
-       /* isPlayed: false */
+       playerSubtitleWarning: false,
+       transcriptSubtitleWarning: false,
+       availablePlayerTracks: [],
+       availableTranscriptTracks: []
      }
    },
    components: {
@@ -155,6 +177,16 @@
        this.startTime = parseFloat(this.$refs.settingComp.startTime);
        this.lagTime = parseFloat(this.$refs.settingComp.lagTime);
        this.doneSettingFlg = true;
+     },
+
+     handlePlayerSubtitleStatus(statusData) {
+       this.playerSubtitleWarning = !statusData.hasRequestedLanguage;
+       this.availablePlayerTracks = statusData.availableTracks;
+     },
+     
+     handleTranscriptSubtitleStatus(statusData) {
+       this.transcriptSubtitleWarning = !statusData.hasRequestedLanguage;
+       this.availableTranscriptTracks = statusData.availableTracks;
      }
    }
  }
@@ -271,6 +303,25 @@
   font-size: 14px;
   color: #666;
   margin-top: 20px;
+}
+
+.subtitle-warning {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 77, 79, 0.8);
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 10;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.subtitle-warning i {
+  margin-right: 5px;
 }
 
 /* For icons - You may need to add actual icons or a library */
