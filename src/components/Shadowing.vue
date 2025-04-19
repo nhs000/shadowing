@@ -16,11 +16,8 @@
         <div class="playback-controls-container">
           <!-- Main centered play/stop controls -->
           <div class="main-controls">
-            <button @click="playBoth" class="control-btn primary large" title="Play Both">
-              <i class="fas fa-play-circle"></i>
-            </button>
-            <button @click="stopBoth" class="control-btn danger large" title="Stop Both">
-              <i class="fas fa-stop-circle"></i>
+            <button @click="togglePlayback" class="control-btn large" :class="isPlaying ? 'danger' : 'primary'" :title="isPlaying ? 'Stop' : 'Play'">
+              <i class="fas" :class="isPlaying ? 'fa-stop-circle' : 'fa-play-circle'"></i>
             </button>
           </div>
           
@@ -99,6 +96,9 @@
      });
    },
    computed: {
+     isPlaying() {
+       return !this.isPausedPlayer || !this.isPausedTranscript;
+     }
    },
    methods: {
      reset() {
@@ -108,11 +108,20 @@
        this.isPausedTranscript = false;
      },
 
-     playBoth() {
-       this.$refs.player.resume();
-       this.$refs.transcript.resume();
-       this.isPausedPlayer = false;
-       this.isPausedTranscript = false;
+     togglePlayback() {
+       if (this.isPlaying) {
+         // If currently playing, stop both videos
+         this.$refs.player.pause();
+         this.$refs.transcript.pause();
+         this.isPausedPlayer = true;
+         this.isPausedTranscript = true;
+       } else {
+         // If currently stopped, play both videos
+         this.$refs.player.resume();
+         this.$refs.transcript.resume();
+         this.isPausedPlayer = false;
+         this.isPausedTranscript = false;
+       }
      },
 
      togglePauseTranscript() {
@@ -136,12 +145,6 @@
          /* this.$refs.transcript.pause(); */
          this.isPausedPlayer = true;
        }
-     },
-     stopBoth() {
-       this.$refs.player.pause();
-       this.$refs.transcript.pause();
-       this.isPausedPlayer = true;
-       this.isPausedTranscript = true;
      },
      /* resume() {
       *   this.$refs.player.resume();
