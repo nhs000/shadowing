@@ -74,7 +74,7 @@
       </div>
       
       <div class="keyboard-shortcuts">
-        <p><strong>Keyboard Shortcuts:</strong> P = Toggle Transcript Video, Q = Toggle Player Video</p>
+        <p><strong>Keyboard Shortcuts:</strong> Space = Play/Stop Both, P = Toggle Transcript Video, Q = Toggle Player Video</p>
       </div>
     </div>
   </div>
@@ -114,6 +114,18 @@
        if (e.keyCode == 81) {
          /* if (this.isPlayed == false) this.play(); */
          this.togglePausePlayer();
+       }
+       if (e.keyCode == 32) { // Space key
+         // Prevent default space bar behavior (page scrolling)
+         e.preventDefault();
+         this.togglePlayback();
+       }
+     });
+
+     // Also prevent default space behavior on keydown to avoid page scrolling
+     window.addEventListener('keydown', (e) => {
+       if (e.keyCode == 32) {
+         e.preventDefault();
        }
      });
    },
