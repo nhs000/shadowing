@@ -99,215 +99,216 @@ import SpeechRecognition from "./speech-recognition/Index";
 import Setting from "./setting/Index.vue";
 
 export default {
-    name: "ShadowingIndex",
-    data: () => {
-        return {
-            doneSettingFlg: false,
-            isPausedPlayer: true,
-            isPausedTranscript: true,
-            playerSubtitleWarning: false,
-            transcriptSubtitleWarning: false,
-            availablePlayerTracks: [],
-            availableTranscriptTracks: [],
-            saveInterval: null,
-            lastSavedPosition: 0
-        }
-    },
-    components: {
-        VideoPlayer,
-        Transcript,
-        SpeechRecognition,
-        Setting
-    },
-    created: function() {
-        window.addEventListener('keyup', (e) => {
-            if (e.keyCode == 80) {
-                /* if (this.isPlayed == false) this.play(); */
-                this.togglePauseTranscript();
-            }
-            if (e.keyCode == 81) {
-                /* if (this.isPlayed == false) this.play(); */
-                this.togglePausePlayer();
-            }
-            if (e.keyCode == 32) { // Space key
-                // Prevent default space bar behavior (page scrolling)
-                e.preventDefault();
-                this.togglePlayback();
-            }
-        });
-        
-        // Also prevent default space behavior on keydown to avoid page scrolling
-        window.addEventListener('keydown', (e) => {
-            if (e.keyCode == 32) {
-                e.preventDefault();
-            }
-            
-            // Left arrow for backward
-            if (e.keyCode == 37) {
-                e.preventDefault();
-                this.seekBackward();
-            }
-            
-            // Right arrow for forward
-            if (e.keyCode == 39) {
-                e.preventDefault();
-                this.seekForward();
-            }
-        });
-    },
-    computed: {
-        isPlaying() {
-            return !this.isPausedPlayer || !this.isPausedTranscript;
-        }
-    },
-    methods: {
-        reset() {
-            this.$refs.player.playAt(this.startTime);
-            this.$refs.transcript.playAt(this.startTime + this.lagTime);
-            this.isPausedPlayer = false;
-            this.isPausedTranscript = false;
-        },
-        
-        togglePlayback() {
-            if (this.isPlaying) {
-                // If currently playing, stop both videos
-                this.$refs.player.pause();
-                this.$refs.transcript.pause();
-                this.isPausedPlayer = true;
-                this.isPausedTranscript = true;
-                
-                // Save state when manually paused
-                this.saveCurrentState();
-            } else {
-                // If currently stopped, play both videos
-                this.$refs.player.resume();
-                this.$refs.transcript.resume();
-                this.isPausedPlayer = false;
-                this.isPausedTranscript = false;
-            }
-        },
-        
-        togglePauseTranscript() {
-            if (this.isPausedTranscript) {
-                /* this.$refs.player.resume(); */
-                this.$refs.transcript.resume();
-                this.isPausedTranscript = false;
-            } else {
-                /* this.$refs.player.pause(); */
-                this.$refs.transcript.pause();
-                this.isPausedTranscript = true;
-            }
-        },
-        togglePausePlayer() {
-            if (this.isPausedPlayer) {
-                this.$refs.player.resume();
-                /* this.$refs.transcript.resume(); */
-                this.isPausedPlayer = false;
-            } else {
-                this.$refs.player.pause();
-                /* this.$refs.transcript.pause(); */
-                this.isPausedPlayer = true;
-            }
-        },
-        /* resume() {
-         *   this.$refs.player.resume();
-         *   this.$refs.transcript.resume();
-         * }, */
-        setInitValues() {
-            this.videoId = this.$refs.settingComp.videoId;
-            this.startTime = parseFloat(this.$refs.settingComp.startTime);
-            this.lagTime = parseFloat(this.$refs.settingComp.lagTime);
-            this.doneSettingFlg = true;
-            
-            // Start auto-save once videos are loaded
-            this.$nextTick(() => {
-                this.startAutoSave();
-            });
-        },
-        
-        handlePlayerSubtitleStatus(statusData) {
-            this.playerSubtitleWarning = !statusData.hasRequestedLanguage;
-            this.availablePlayerTracks = statusData.availableTracks;
-        },
-        
-        handleTranscriptSubtitleStatus(statusData) {
-            this.transcriptSubtitleWarning = !statusData.hasRequestedLanguage;
-            this.availableTranscriptTracks = statusData.availableTracks;
-        },
-        
-        async seekBackward() {
-            // Get current time from player video and seek both videos 3 seconds back
-            const player = this.$refs.player.player;
-            if (player) {
-                const currentTime = await player.getCurrentTime();
-                console.log("Current time: " + currentTime);
-                const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
-                this.$refs.player.playAt(newTime);
-            }
-            
-            const transcript = this.$refs.transcript.player;
-            if (transcript) {
-                const currentTime = await transcript.getCurrentTime();
-                const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
-                this.$refs.transcript.playAt(newTime); // Lag time is handled by transcript component
-            }
-        },
-        
-        async seekForward() {
-            // Get current time from player video and seek both videos 3 seconds forward
-            const player = this.$refs.player.player;
-            if (player) {
-                const currentTime = await player.getCurrentTime();
-                const newTime = currentTime + 3;
-                this.$refs.player.playAt(newTime);
-            }
-            const transcript = this.$refs.transcript.player;
-            if (transcript) {
-                const currentTime = await transcript.getCurrentTime();
-                const newTime = currentTime + 3;
-                this.$refs.transcript.playAt(newTime); // Lag time is handled by transcript component
-            }
-        },
-
-        saveCurrentState() {
-            // Only save if videos are loaded
-            if (this.$refs.player && this.$refs.player.player) {
-                this.$refs.player.player.getCurrentTime().then(currentTime => {
-                    const stateData = {
-                        videoId: this.videoId,
-                        startTime: this.startTime,
-                        lagTime: this.lagTime,
-                        lastPosition: currentTime,
-                        savedAt: new Date().getTime()
-                    };
-                    
-                    localStorage.setItem('shadowingAppState', JSON.stringify(stateData));
-                    this.lastSavedPosition = currentTime;
-                    console.log('State saved, position:', currentTime);
-                });
-            }
-        },
-        
-        startAutoSave() {
-            // Save state every 5 seconds while playing
-            this.saveInterval = setInterval(() => {
-                if (!this.isPausedPlayer) {
-                    this.saveCurrentState();
-                }
-            }, 5000);
-        },
-        
-        stopAutoSave() {
-            if (this.saveInterval) {
-                clearInterval(this.saveInterval);
-            }
-        }
-    },
-    beforeDestroy() {
-        this.stopAutoSave();
-        // Save state one last time when component is destroyed
-        this.saveCurrentState();
+  name: "ShadowingIndex",
+  data: () => {
+    return {
+      doneSettingFlg: false,
+      isPausedPlayer: true,
+      isPausedTranscript: true,
+      playerSubtitleWarning: false,
+      transcriptSubtitleWarning: false,
+      availablePlayerTracks: [],
+      availableTranscriptTracks: [],
+      saveInterval: null,
+      lastSavedPosition: 0
     }
+  },
+  components: {
+    VideoPlayer,
+    Transcript,
+    SpeechRecognition,
+    Setting
+  },
+  created: function() {
+    window.addEventListener('keyup', (e) => {
+      if (e.keyCode == 80) {
+        /* if (this.isPlayed == false) this.play(); */
+        this.togglePauseTranscript();
+      }
+      if (e.keyCode == 81) {
+        /* if (this.isPlayed == false) this.play(); */
+        this.togglePausePlayer();
+      }
+      if (e.keyCode == 32) { // Space key
+        // Prevent default space bar behavior (page scrolling)
+        e.preventDefault();
+        this.togglePlayback();
+      }
+    });
+    
+    // Also prevent default space behavior on keydown to avoid page scrolling
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode == 32) {
+        e.preventDefault();
+      }
+      
+      // Left arrow for backward
+      if (e.keyCode == 37) {
+        e.preventDefault();
+        this.seekBackward();
+      }
+      
+      // Right arrow for forward
+      if (e.keyCode == 39) {
+        e.preventDefault();
+        this.seekForward();
+      }
+    });
+  },
+  computed: {
+    isPlaying() {
+      return !this.isPausedPlayer || !this.isPausedTranscript;
+    }
+  },
+  methods: {
+    reset() {
+      this.$refs.player.playAt(this.startTime);
+      this.$refs.transcript.playAt(this.startTime + this.lagTime);
+      this.isPausedPlayer = false;
+      this.isPausedTranscript = false;
+    },
+    
+    togglePlayback() {
+      if (this.isPlaying) {
+        // If currently playing, stop both videos
+        this.$refs.player.pause();
+        this.$refs.transcript.pause();
+        this.isPausedPlayer = true;
+        this.isPausedTranscript = true;
+        
+        // Save state when manually paused
+        this.saveCurrentState();
+      } else {
+        // If currently stopped, play both videos
+        this.$refs.player.resume();
+        this.$refs.transcript.resume();
+        this.isPausedPlayer = false;
+        this.isPausedTranscript = false;
+      }
+    },
+    
+    togglePauseTranscript() {
+      if (this.isPausedTranscript) {
+        /* this.$refs.player.resume(); */
+        this.$refs.transcript.resume();
+        this.isPausedTranscript = false;
+      } else {
+        /* this.$refs.player.pause(); */
+        this.$refs.transcript.pause();
+        this.isPausedTranscript = true;
+      }
+    },
+    togglePausePlayer() {
+      if (this.isPausedPlayer) {
+        this.$refs.player.resume();
+        /* this.$refs.transcript.resume(); */
+        this.isPausedPlayer = false;
+      } else {
+        this.$refs.player.pause();
+        /* this.$refs.transcript.pause(); */
+        this.isPausedPlayer = true;
+      }
+    },
+    /* resume() {
+     *   this.$refs.player.resume();
+     *   this.$refs.transcript.resume();
+     * }, */
+    setInitValues() {
+      this.videoId = this.$refs.settingComp.videoId;
+      this.startTime = parseFloat(this.$refs.settingComp.startTime);
+      this.lagTime = parseFloat(this.$refs.settingComp.lagTime);
+      this.doneSettingFlg = true;
+      
+      // Start auto-save once videos are loaded
+      this.$nextTick(() => {
+        this.startAutoSave();
+      });
+    },
+    
+    handlePlayerSubtitleStatus(statusData) {
+      this.playerSubtitleWarning = !statusData.hasRequestedLanguage;
+      this.availablePlayerTracks = statusData.availableTracks;
+    },
+    
+    handleTranscriptSubtitleStatus(statusData) {
+      this.transcriptSubtitleWarning = !statusData.hasRequestedLanguage;
+      this.availableTranscriptTracks = statusData.availableTracks;
+    },
+    
+    async seekBackward() {
+      // Get current time from player video and seek both videos 3 seconds back
+      const player = this.$refs.player.player;
+      if (player) {
+        const currentTime = await player.getCurrentTime();
+        const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
+        this.$refs.player.playAt(newTime);
+      }
+      
+      const transcript = this.$refs.transcript.player;
+      if (transcript) {
+        const currentTime = await transcript.getCurrentTime();
+        console.log("Current time: " + currentTime);
+        const newTime = Math.max(0, currentTime - 3); // Ensure we don't go below 0
+        console.log("New time: " + newTime);
+        this.$refs.transcript.playAt(newTime);
+      }
+    },
+    
+    async seekForward() {
+      // Get current time from player video and seek both videos 3 seconds forward
+      const player = this.$refs.player.player;
+      if (player) {
+        const currentTime = await player.getCurrentTime();
+        const newTime = currentTime + 3;
+        this.$refs.player.playAt(newTime);
+      }
+      const transcript = this.$refs.transcript.player;
+      if (transcript) {
+        const currentTime = await transcript.getCurrentTime();
+        const newTime = currentTime + 3;
+        this.$refs.transcript.playAt(newTime);
+      }
+    },
+    
+    saveCurrentState() {
+      // Only save if videos are loaded
+      if (this.$refs.player && this.$refs.player.player) {
+        this.$refs.player.player.getCurrentTime().then(currentTime => {
+          const stateData = {
+            videoId: this.videoId,
+            startTime: this.startTime,
+            lagTime: this.lagTime,
+            lastPosition: currentTime,
+            savedAt: new Date().getTime()
+          };
+          
+          localStorage.setItem('shadowingAppState', JSON.stringify(stateData));
+          this.lastSavedPosition = currentTime;
+          console.log('State saved, position:', currentTime);
+        });
+      }
+    },
+    
+    startAutoSave() {
+      // Save state every 5 seconds while playing
+      this.saveInterval = setInterval(() => {
+        if (!this.isPausedPlayer) {
+          this.saveCurrentState();
+        }
+      }, 5000);
+    },
+    
+    stopAutoSave() {
+      if (this.saveInterval) {
+        clearInterval(this.saveInterval);
+      }
+    }
+  },
+  beforeDestroy() {
+    this.stopAutoSave();
+    // Save state one last time when component is destroyed
+    this.saveCurrentState();
+  }
 }
 
 </script>
@@ -488,8 +489,8 @@ export default {
 }
 
 .control-btn.medium {
-  font-size: 18px;
-  padding: 10px 16px;
-  min-width: 60px;
+    font-size: 18px;
+    padding: 10px 16px;
+    min-width: 60px;
 }
 </style>
